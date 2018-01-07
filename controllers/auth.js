@@ -9,7 +9,7 @@ router.get("/login", function(req, res){
 });
 
 router.post("/login", passport.authenticate("local", {
-	successRedirect: "/profile",
+	successRedirect: "/main/index",
 	successFlash: "Login Successful",
 	failureRedirect: "/auth/login",
 	failureFlash: "invalid credentials"
@@ -34,7 +34,7 @@ router.post("/signup", function(req, res, next){
 		if(wasCreated){
 			//good job.  you nailed it without duplication
 			passport.authenticate("local", {
-				successRedirect: "/profile",
+				successRedirect: "/main/index",
 				successFlash: "logged in with success"
 			})(req, res, next);
 		}
