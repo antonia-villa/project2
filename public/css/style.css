@@ -1,0 +1,18 @@
+/***********************/
+/* Overall Styling
+/***********************/
+
+
+/***********************/
+/* Data Entry Form 
+/***********************/
+#entry1 {
+	float:left;
+	margin: auto 0;
+}
+
+
+#entry2 {
+	float:right;
+	margin: auto 0;
+}

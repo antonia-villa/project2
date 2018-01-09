@@ -1,37 +1,47 @@
 <div>
-	<form method="post" action="/visual">
-		<div class="form-group">
-			<label for="state">Enter State:</label>
-		  	<select id="state">
-    			<option>Select a state:</option>
-  			</select>
-  		</div>
-		 <div class="form-group">
-		    <input type="radio" id="2010"
-		     name="year" value="2010">
-		    <label for="2010">2010</label>
-		    <input type="radio" id="2011"
-		     name="year" value="2011">
-		    <label for="2011">2011</label>
-		    <input type="radio" id="2012"
-		     name="year" value="2012">
-		    <label for="2012">2012</label>
-		    <input type="radio" id="2013"
-		     name="year" value="2013">
-		    <label for="2013">2013</label>
-		    <input type="radio" id="2014"
-		     name="year" value="2014">
-		    <label for="2014">2014</label>
+	<form method="post" action="/visuals">
+		<div id="entry1">
+			<div class="form-group">
+				<label for="zipcode1">Enter Zip Code:</label>
+			  	<input name="zipcode1" type="text" placeholder= "Zip Code" pattern= "[0-9]{5}" required/>
+	  		</div>
+	  		<div class="form-group">
+				<label for="zipcode2">Enter a Comparison Code:</label>
+			  	<input name="zipcode2" type="text" placeholder= "Zip Code" pattern= "[0-9]{5}" required/>
+	  		</div>
+			 <div class="form-group">
+			    <label for="2010">2010</label>
+			    <input type="radio" id="2010"
+			     name="year" value="2010" required>
+			    <label for="2011">2011</label>
+			    <input type="radio" id="2011"
+			     name="year" value="2011" required>
+			    <label for="2012">2012</label>
+			    <input type="radio" id="2012"
+			     name="year" value="2012" required>
+			    <label for="2013">2013</label>
+			    <input type="radio" id="2013"
+			     name="year" value="2013" required>
+			    <label for="2014">2014</label>
+			    <input type="radio" id="2014"
+			     name="year" value="2014" required>
+			    <label for="2015">2015</label>
+			    <input type="radio" id="2015"
+			     name="year" value="2015" required>
+			</div>
+			<div class="form-group">
+				<select name="topic1" id="topic1">
+					<option> Choose a data topic: </option>
+				</select>
+			</div>
+			<div class="form-group">
+				<select name="topic2" id="topic2">
+					<option> Choose a comparison data type: </option>
+				</select>
+			</div>
 		</div>
-		<div class="form-group">
-			<select id="topic">
-				<option> Please choose a topic you wish to explore </option>
-			</select>
-			<br>
-			<select id="subTopic">
-	  			<option>Please choose from the available data sets </option>
-			</select>
-		</div>
+
 		<input type="submit" value="View Data" class= "btn btn-success">
+
   	</form>
   </div>

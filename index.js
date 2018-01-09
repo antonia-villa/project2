@@ -33,7 +33,7 @@ app.use('/auth', require('./controllers/auth'));
 app.use('/main', require('./controllers/main'));
 app.use('/contributions', require('./controllers/contributions'));
 app.use('/tags', require('./controllers/tags'));
-app.use('/visual', require('./controllers/visuals'));
+app.use('/visuals', require('./controllers/visuals'));
 app.use(express.static(path.join(__dirname, '/public')));
 
 

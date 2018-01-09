@@ -1,43 +1,33 @@
 var topics = [
-    {
-        "topic": "Income", 
-        "id":"0",  
+    { 
+        "topic": "Poverty", 
+        "id":"0", 
         "subTopic": 
-            [
-                {"income": "B19013_001E"}, 
-                {"poverty": "B17001_002E"}, 
-                {"poverty_white_alone": "B17001A_002E"}
-            ]
+            ["poverty_white_alone", "poverty_black_alone", "poverty_asian_alone", "poverty_native_hawaiian_alone", "poverty_other_alone" ]
+    },
+    { 
+        "topic": "Demographics", 
+        "id":"1", 
+        "subTopic": 
+            ["population_american_indian_alone", "population_white_alone", "population_black_alone", "population_asian_alone", "population_native_hawaiian_alone", "population_other_alone", "population_hispanic_origin"]
     },
     { 
         "topic": "Education", 
-        "id":"1", 
-        "subTopic": 
-            [
-                {"education_none": "B15003_002E"},
-                {"education_high_school": "B15003_017E"}, 
-                {"education_bachelors": "B15003_022E"}, 
-                {"education_masters": "B15003_023E"}
-            ]
-    },
-    { 
-        "topic": "Rent", 
         "id":"2", 
         "subTopic": 
-            [
-                {"median_contract_rent": "B25058_001E"},
-                {"median_gross_rent": "B25064_001E"}
-            ]
+            ["education_none", "education_high_school", "education_ged", "education_associates", "education_bachelors", "education_masters", "education_professional", "education_doctorate"]
     },
-    { 
+        { 
         "topic": "Employment", 
         "id":"3", 
         "subTopic": 
-            [
-                {"employment_labor_force": "B23025_002E"}, 
-                {"employment_not_labor_force": "B23025_007E"}, 
-                {"employment_employed": "B23025_004E"}, 
-                {"employment_unemployed": "B23025_005E"}
-            ]
+            ["employment_employed", "employment_unemployed"]
+    },
+    {
+        "topic": "Commute", 
+        "id":"4",  
+        "subTopic": 
+            ["commute_time_solo_automobile", "commute_time_carpool", "commute_time_public_transport", "commute_time_walked", "commute_time_other"]
     }
 ]
+
