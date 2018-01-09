@@ -5,8 +5,7 @@
 	</h3>
 	<hr>
 	<p> Make Data Selection: </p>
-	<!-- <form method="post" action="/visuals"> -->
-	<form>
+	<form method="post" action="/visuals">
 		<div class="form-group">
 			<label for="state">Enter State:</label>
 		  	<select id="state">
@@ -32,14 +31,11 @@
 		</div>
 		<div class="form-group">
 			<select id="topic">
-	  			<option value="">Please Select a main topic</option>
-	  			<option value="1">Income</option>
-	  			<option value="2">Education</option>
-	  			<option value="3">Socioeconomic Status</option>
+				<option> Please choose a topic you wish to explore </option>
 			</select>
 			<br>
-			<select id="sub-topic">
-	  			<option>Please choose from the available statistics</option>
+			<select id="subTopic">
+	  			<option>Please choose from the available data sets </option>
 			</select>
 		</div>
 		<input type="submit" value="View Data" class= "btn btn-success">

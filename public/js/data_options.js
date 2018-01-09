@@ -1,38 +1,37 @@
+// Load Main Topics
+$(document).ready(function(){
+    $('#subTopic').css( "display", "none" )
+    selectTopic(topics);
+})
 
-$( "#topic" ).change(function() {
-    var $option = $(this).find('option:selected');
-    //Added with the EDIT
-    var value = $option.val();
-    selectTopic(value);
-});
+function selectTopic(topics) {
+    var topic = $("#topic");
 
-
-
-function selectTopic(topic) {
-
-    // Get a reference to the foods select.
-    var selectedTopic = $("#sub-topic");
-    // Create a two dimension array containing foods for each group.
-
-    var topics = [["income","Grapes","Oranges","Watermelon"],
-
-                ["Brocolli", "Califlower","Spinach","Tomatoes"],
-
-                ["Beef", "Chicken", "Turkey", "Tuna"]];
-
-                 
-
-    if ((topic >= 0) && (topic <= topics.length)) {
-        selectedTopic.options.length = 0;
-        // Index was in range, so access our array and create options.
-
-        for (var i = 0; i < topics[topic - 1].length; i++) {
-
-           selectedTopic.options[selectedTopic.options.length] = new Option(topics[topic - 1][i], i);
-        }
-
- 
-
+    for (i in topics) {
+        var option = $('<option/>');
+        option.attr({ 'value': topics[i].id}).text(topics[i].topic);
+        $('#topic').append(option);
     }
 
+
+};
+
+$( "#topic" ).change(function() {
+    $('#subTopic').css( "display", "block" )
+  var topicId = $( "#topic" ).val();
+  selectSubTopic(topicId);
+
+});
+
+function selectSubTopic(topicId){
+    var subTopic = $("#subTopic");
+
+    var options = topics[topicId].subTopic;
+    for (i in options){
+        var option = $('<option/>');
+        option.attr({ 'value': Object.values(options[i])}).text(Object.keys(options[i]));
+        $('#subTopic').append(option);
+    }
 }
+
+
