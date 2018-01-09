@@ -1,0 +1,47 @@
+<h2>Landing Page</h2>
+<div>
+	<h3>
+		Welcome back, <%=currentUser.firstname%>!
+	</h3>
+	<hr>
+	<p> Make Data Selection: </p>
+	<!-- <form method="post" action="/visuals"> -->
+	<form>
+		<div class="form-group">
+			<label for="state">Enter State:</label>
+		  	<select id="state">
+    			<option>Select a state:</option>
+  			</select>
+  		</div>
+		 <div class="form-group">
+		    <input type="radio" id="2010"
+		     name="year" value="2010">
+		    <label for="2010">2010</label>
+		    <input type="radio" id="2011"
+		     name="year" value="2011">
+		    <label for="2011">2011</label>
+		    <input type="radio" id="2012"
+		     name="year" value="2012">
+		    <label for="2012">2012</label>
+		    <input type="radio" id="2013"
+		     name="year" value="2013">
+		    <label for="2013">2013</label>
+		    <input type="radio" id="2014"
+		     name="year" value="2014">
+		    <label for="2014">2014</label>
+		</div>
+		<div class="form-group">
+			<select id="topic">
+	  			<option value="">Please Select a main topic</option>
+	  			<option value="1">Income</option>
+	  			<option value="2">Education</option>
+	  			<option value="3">Socioeconomic Status</option>
+			</select>
+			<br>
+			<select id="sub-topic">
+	  			<option>Please choose from the available statistics</option>
+			</select>
+		</div>
+		<input type="submit" value="View Data" class= "btn btn-success">
+  	</form>
+</div>

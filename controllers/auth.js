@@ -9,7 +9,7 @@ router.get("/login", function(req, res){
 });
 
 router.post("/login", passport.authenticate("local", {
-	successRedirect: "/main/index",
+	successRedirect: "/main/profile",
 	successFlash: "Login Successful",
 	failureRedirect: "/auth/login",
 	failureFlash: "invalid credentials"
@@ -21,7 +21,6 @@ router.get("/signup", function(req, res){
 })
 
 router.post("/signup", function(req, res, next){
-	console.log("req.body is", req.body);
 	db.user.findOrCreate({
 		where: {email: req.body.email},
 		defaults: {
@@ -34,7 +33,7 @@ router.post("/signup", function(req, res, next){
 		if(wasCreated){
 			//good job.  you nailed it without duplication
 			passport.authenticate("local", {
-				successRedirect: "/main/index",
+				successRedirect: "/main/profile",
 				successFlash: "logged in with success"
 			})(req, res, next);
 		}

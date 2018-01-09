@@ -4,8 +4,8 @@ var router = express.Router();
 var isLoggedIn = require('../middleware/isLoggedIn');
 
 
-router.get('/', isLoggedIn, function(req,res){
-	res.render('main/index');
+router.get('/profile', isLoggedIn, function(req,res){
+	res.render('main/profile');
 });
 
 

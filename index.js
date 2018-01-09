@@ -31,6 +31,8 @@ app.use(function(req,res,next){
 // Set up controllers
 app.use('/auth', require('./controllers/auth'));
 app.use('/main', require('./controllers/main'));
+app.use('/contributions', require('./controllers/contributions'));
+app.use('/tags', require('./controllers/tags'));
 app.use(express.static(path.join(__dirname, '/public')));
 
 
@@ -40,10 +42,6 @@ app.get('/', function(req, res){
 	// Change to res.render when home page is set up
 	res.render('home');
 });
-
-// app.get('/main/index', isLoggedIn, function(req,res){
-// 	res.render('main/index');
-// });
 
 
 
