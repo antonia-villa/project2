@@ -12,15 +12,24 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     userId: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-       models.contribution.belongsTo(models.user);
-       models.contribution.hasMany(models.comment);
-       models.contribution.belongstoMany(models.tag, {through: models.contribution_tag });
-      }
-    }
-  });
+});
+contribution.associate = function (models) {
+    models.contribution.belongsTo(models.user);
+    models.contribution.hasMany(models.comment);
+    models.contribution.belongsToMany(models.tag, {through: models.contribution_tag });
+  
+};
   return contribution;
 };
+  // });, {
+  //   classMethods: {
+  //     associate: function(models) {
+  //       // associations can be defined here
+  //      models.contribution.belongsTo(models.user);
+  //      models.contribution.hasMany(models.comment);
+  //      models.contribution.belongstoMany(models.tag, {through: models.contribution_tag });
+  //     }
+  //   }
+  // });
+  // return contribution;
+// });

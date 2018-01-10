@@ -14,9 +14,6 @@ router.get('/new', function(req, res){
 
 //res.status(status).send(body)
 router.post('/', function(req, res){
-	console.log('userid', req.body.id)
-	console.log('userid', req.body.user)
-
 	// Input variables for API request
 	var zipcode1 = req.body.zipcode1;
 	var zipcode2 = req.body.zipcode2;
@@ -48,7 +45,7 @@ router.post('/', function(req, res){
 	};
 
 
-	census.APIRequest(request1, function(response) {
+	census.APIRequest(request1, function(response, topic1) {
 
 	
 	// Build Visual2 here
@@ -60,6 +57,7 @@ router.post('/', function(req, res){
 	 var percent_poverty = Math.floor((data.poverty/data.population)*100);
 
 	 res.render('visuals/visual', {
+	 	topic1: topic1,
 	 	zipcode1: zipcode,
 	 	year1: year,
 	 	city1: city,

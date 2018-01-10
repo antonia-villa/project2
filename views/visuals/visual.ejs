@@ -37,9 +37,8 @@
 		<textarea name="content" class="form-control"></textarea>
 	</div>
 	<div class = "form-group">
-		<label> Tags: </label>
-		<input type="text" name="tags" placeholder="comma-separated list of tags" class="form-control">
+	<input type="hidden" name= "tags" value=<%=[zipcode1, year1]%>>
 	</div>
-	<input type="hidden" name="id" value="<%=currentUser.dataValues.id%>">
+	<input type="hidden" name="userId" value="<%=currentUser.dataValues.id%>">
 	<input type="submit" value="Create Contribution" class= "btn btn-success">
 </form>
