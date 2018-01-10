@@ -16,3 +16,25 @@
 	float:right;
 	margin: auto 0;
 }
+
+
+/***********************/
+/* Data Visual Display Page
+/***********************/
+
+#zip1{
+    display: block;
+    float: left;
+    box-sizing: border-box;
+    width: 48%;
+    margin: 0 2% 10px 0
+}
+
+
+#zip2{
+    display: block;
+    float: right;
+    box-sizing: border-box;
+    width: 48%;
+    margin: 0 0 10px 2%
+}

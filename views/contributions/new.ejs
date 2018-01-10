@@ -1,30 +1,3 @@
-<div id="zip1">
-	<h2> <%= city1%>:<%= zipcode1%></h2>
-	<h3> <%= year1%></h3>
-	<hr>
-	<div>
-		<table class="table table-striped">
-			<tbody>
-				<tr>
-					<td>Population:</td>
-					<td><%= population1%></td>
-				</tr>
-				<tr>
-					<td> Average Age: </td>
-					<td><%= age1 %></td>
-				</tr>
-				<tr>
-					<td> Average Income: </td>
-					<td> &#36; <%= income1%></td>
-				</tr>
-				<tr>
-					<td> % of Population in Poverty </td>
-					<td><%=percent_poverty1%> &#37;</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
 <h2 class="text-center"> New Contribution </h2>
 
 <form method="post" action ="/contributions">
@@ -34,6 +7,11 @@
 		<input type="text" name="title" placeholder = "Title of Contribution" class="form-control" required>
 	</div>
 	<div class="form-group">
+		<label for="author">Author:</label>
+		<select name="userId" class="form-control" id="author" required>
+		</select>
+	</div>
+	<div class="form-group">
 		<label for="content">Content:</label>
 		<textarea name="content" class="form-control"></textarea>
 	</div>
@@ -41,6 +19,5 @@
 		<label> Tags: </label>
 		<input type="text" name="tags" placeholder="comma-separated list of tags" class="form-control">
 	</div>
-	<input type="hidden" name="id" value="">
 	<input type="submit" value="Create Contribution" class= "btn btn-success">
 </form>

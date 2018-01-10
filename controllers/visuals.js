@@ -9,14 +9,11 @@ var census = require('citysdk')(process.env.CENSUS_API_KEY);
 router.get('/new', function(req, res){
 
 	res.render('visuals/new');
-
 });
 
 
 //res.status(status).send(body)
 router.post('/', function(req, res){
-	console.log('body is', req.body);
-	res.render('visuals/visual');
 
 	// Input variables for API request
 	var zipcode1 = req.body.zipcode1;
@@ -48,23 +45,48 @@ router.post('/', function(req, res){
     	"year": year
 	};
 
-	// census.APIRequest(request1).then(function(response){
-	// 	// Build Visual1 here
-	//   console.log(response);
-	// }).catch(function(err){
-	// 	console.log('catch reached. err was', err);
-	// 	res.status(500).send('uh oh :(');
-	// });
 
 	census.APIRequest(request1, function(response) {
-		// Build Visual2 here
-	  console.log(response);
+
+	
+	// Build Visual2 here
+	 var data = response.data[0];
+	 var zipcode = response.zip;
+	 var year = response.year;
+	 var city = response.place_name;
+	 
+	 var percent_poverty = Math.floor((data.poverty/data.population)*100);
+
+	 res.render('visuals/visual', {
+	 	zipcode1: zipcode,
+	 	year1: year,
+	 	city1: city,
+	 	population1: data.population,
+	 	age1: data.age,
+	 	income1: data.income,
+	 	percent_poverty1: percent_poverty
+	 });
 	});
 
-	census.APIRequest(request2, function(response) {
-		// Build Visual2 here
-	  console.log(response);
-	});
+	// census.APIRequest(request2, function(response) {
+	// 	// Build Visual2 here
+	//  var data = response.data[0];
+	//  var zipcode = response.zip;
+	//  var year = response.year;
+	//  var city = response.place_name;
+	 
+	//  var percent_poverty = Math.floor((data.poverty/data.population)*100);
+
+	//  res.render('visuals/visual', {
+	//  	zipcode2: zipcode,
+	//  	year2: year,
+	//  	city2: city,
+	//  	population2: data.population,
+	//  	age2: data.age,
+	//  	income2: data.income,
+	//  	percent_poverty2: percent_poverty
+	//  });
+	// });
 
 });
 
