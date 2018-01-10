@@ -14,6 +14,8 @@ router.get('/new', function(req, res){
 
 //res.status(status).send(body)
 router.post('/', function(req, res){
+	console.log('userid', req.body.id)
+	console.log('userid', req.body.user)
 
 	// Input variables for API request
 	var zipcode1 = req.body.zipcode1;
