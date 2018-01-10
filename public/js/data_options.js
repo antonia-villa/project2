@@ -12,7 +12,7 @@ function selectTopic(topic, topics) {
 
     for (i in topics) {
         var option = $('<option/>');
-        option.attr({ 'value': topics[i].subTopic}).text(topics[i].topic).attr({'data-topicId':topics[i].id});
+        option.attr({ 'value': topics[i].id}).text(topics[i].topic);
         $(topic).append(option);
     }
 };

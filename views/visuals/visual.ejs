@@ -1,30 +1,58 @@
 <div id="zip1">
-	<h2> <%= city1%>:<%= zipcode1%></h2>
-	<h3> <%= year1%></h3>
+	<h2> <%= results[0].city%>:<%= results[0].zipcode%></h2>
+	<h3> <%= results[0].year%></h3>
 	<hr>
 	<div>
 		<table class="table table-striped">
 			<tbody>
 				<tr>
 					<td>Population:</td>
-					<td><%= population1%></td>
+					<td><%= results[0].population%></td>
 				</tr>
 				<tr>
 					<td> Average Age: </td>
-					<td><%= age1 %></td>
+					<td><%= results[0].age %></td>
 				</tr>
 				<tr>
 					<td> Average Income: </td>
-					<td> &#36; <%= income1%></td>
+					<td> &#36; <%= results[0].income%></td>
 				</tr>
 				<tr>
 					<td> % of Population in Poverty </td>
-					<td><%=percent_poverty1%> &#37;</td>
+					<td><%=results[0].percent_poverty%> &#37;</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 </div>
+<div id="zip2">
+	<h2> <%= results[1].city%>:<%= results[1].zipcode%></h2>
+	<h3> <%= results[1].year%></h3>
+	<hr>
+	<div>
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<td>Population:</td>
+					<td><%= results[1].population%></td>
+				</tr>
+				<tr>
+					<td> Average Age: </td>
+					<td><%= results[1].age %></td>
+				</tr>
+				<tr>
+					<td> Average Income: </td>
+					<td> &#36; <%= results[1].income%></td>
+				</tr>
+				<tr>
+					<td> % of Population in Poverty </td>
+					<td><%=results[1].percent_poverty%> &#37;</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
 <h2 class="text-center"> New Contribution </h2>
 
 <form method="post" action ="/contributions">

@@ -1,9 +1,13 @@
 require('dotenv').config();
 var express = require('express');
 var router = express.Router();
-var async = require('async');
+var cheerio = require('cheerio');
 var db = require('../models');
 var census = require('citysdk')(process.env.CENSUS_API_KEY);
+var dataCleanse = require('./dataCleansing');
+var topiclist = require('./data_topics');
+var async = require('async');
+
 
 
 router.get('/new', function(req, res){
@@ -12,21 +16,30 @@ router.get('/new', function(req, res){
 });
 
 
-//res.status(status).send(body)
+
 router.post('/', function(req, res){
-	// Input variables for API request
+
+	// Input variables for API request from #dataInput form
 	var zipcode1 = req.body.zipcode1;
 	var zipcode2 = req.body.zipcode2;
 	var year = req.body.year;
-	var topic1 = req.body.topic1.split(",");
-	var topic2 = req.body.topic2.split(",");
+	var topic1Id = req.body.topic1
+	var topic2Id = req.body.topic2
 
+	// select subtopic from topics array (/controllers/data_topics.js)
+	var subtopics = []
+
+	for(i in topiclist.topics){
+		if(topiclist.topics[i].id == topic1Id || topiclist.topics[i].id == topic2Id){
+			subtopics = subtopics.concat(topiclist.topics[i].subTopic, topiclist.topics[i].subTopic);
+		}
+	}
 
 	// Default statistics to return
 	var defaultVariables = ["population", "age" , "income", "poverty"]
-	
-	// Variables based on users seletion 
-	var variables = defaultVariables.concat(topic1, topic2);
+
+	// Final variable list based on users seletion 
+	var variables = defaultVariables.concat(subtopics);
 
 	var request1 = {
     	"level": "state",
@@ -44,50 +57,39 @@ router.post('/', function(req, res){
     	"year": year
 	};
 
+	// Request data from API
+	function fn1(callback){
+			census.APIRequest(request1, function(response) {
 
-	census.APIRequest(request1, function(response, topic1) {
+			var rawdata = response;
+			var data = dataCleanse.dataFormat(rawdata);
+			callback(null, data);
+			return data;
+			});	
+	}
 
-	
-	// Build Visual2 here
-	 var data = response.data[0];
-	 var zipcode = response.zip;
-	 var year = response.year;
-	 var city = response.place_name;
-	 
-	 var percent_poverty = Math.floor((data.poverty/data.population)*100);
+	function fn2(callback){
+			census.APIRequest(request2, function(response) {
 
-	 res.render('visuals/visual', {
-	 	topic1: topic1,
-	 	zipcode1: zipcode,
-	 	year1: year,
-	 	city1: city,
-	 	population1: data.population,
-	 	age1: data.age,
-	 	income1: data.income,
-	 	percent_poverty1: percent_poverty
-	 });
+			var rawdata = response;
+			var data = dataCleanse.dataFormat(rawdata);
+			callback(null, data);
+			return data;
+			});	
+	}
+
+	async.parallel([fn1, fn2], function(err, results){
+		req.session.results = results;
+		res.redirect('/visual');
+		// return results;
 	});
-
-	// census.APIRequest(request2, function(response) {
-	// 	// Build Visual2 here
-	//  var data = response.data[0];
-	//  var zipcode = response.zip;
-	//  var year = response.year;
-	//  var city = response.place_name;
-	 
-	//  var percent_poverty = Math.floor((data.poverty/data.population)*100);
-
-	//  res.render('visuals/visual', {
-	//  	zipcode2: zipcode,
-	//  	year2: year,
-	//  	city2: city,
-	//  	population2: data.population,
-	//  	age2: data.age,
-	//  	income2: data.income,
-	//  	percent_poverty2: percent_poverty
-	//  });
-	// });
-
+	//console.log(apiResults);
 });
+
+router.get('/visual', function(req,res){
+	var results = req.session.results;
+	res.render('visuals/visual', {results: results});
+});
+
 
 module.exports = router;
