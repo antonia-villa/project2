@@ -28,20 +28,41 @@ router.post('/', function(req, res){
 
 	// Default statistics to return
 	var defaultVariables = ["population", "age" , "income", "poverty"]
-	// Select additional variables based on users seletion 
-	var subtopics1 = defaultVariables.concat(topic1);
-	var subtopics2 = defaultVariables.concat(topic2);
+	
+	// Variables based on users seletion 
+	var variables = defaultVariables.concat(topic1, topic2);
 
-	var request = {
+	var request1 = {
     	"level": "state",
     	"zip": zipcode1,
-    	"variables": subtopics1,
+    	"variables": variables,
     	"api": "acs5",
     	"year": year
 	};
 
-	census.APIRequest(request, function(response) {
-		// Build Visual here
+	var request2 = {
+    	"level": "state",
+    	"zip": zipcode2,
+    	"variables": variables,
+    	"api": "acs5",
+    	"year": year
+	};
+
+	// census.APIRequest(request1).then(function(response){
+	// 	// Build Visual1 here
+	//   console.log(response);
+	// }).catch(function(err){
+	// 	console.log('catch reached. err was', err);
+	// 	res.status(500).send('uh oh :(');
+	// });
+
+	census.APIRequest(request1, function(response) {
+		// Build Visual2 here
+	  console.log(response);
+	});
+
+	census.APIRequest(request2, function(response) {
+		// Build Visual2 here
 	  console.log(response);
 	});
 
