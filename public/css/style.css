@@ -1,7 +1,41 @@
 /***********************/
 /* Overall Styling
 /***********************/
+body {
+  font-family: 'Barlow', sans-serif;
+  margin: auto;
+  position: relative;
+  margin: 20px;
+  height: 100%;
+}
 
+h1 {
+  font-size: 44px;
+  font-weight: bold;
+}
+
+h2 {
+    font-weight: 100;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit; 
+  text-decoration: underline; 
+}
+
+hr { 
+    display: inline-block;
+    width: 950px;
+    border-style: inset;
+    border-width: .5px;
+    border-color:#9e9c9c;
+} 
 
 /***********************/
 /* Data Entry Form 

@@ -1,1 +1,13 @@
 <h2> HERE IS A SINGLE CONTRIBUTION </h2>
+
+<h2 class = "text-center"> <%= result.title %></h2>
+<p>
+	<%= result.content %>
+</p>
+<div>
+	<%result.tags.forEach(function(t){ %>
+		<a href="/tags/<%= t.id %>">#<%=t.content %></a>
+	<% }); %>
+</div>
+<em>Written on <%=moment(result.createdAt).calendar() %></em>
+<hr>

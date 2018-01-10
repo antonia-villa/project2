@@ -1,1 +1,10 @@
-<h2> All Tags </h2>
+<h2> All available tags </h2>
+<% if(tags && tags.length > 0){ %>
+	<% tags.forEach(function(t){ %>
+		<div>
+			<%= t.content %>
+		</div>
+	<% }); %>
+<% } else { %>
+	<h3> No Tags Yet! </h3>
+<% } %>

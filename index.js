@@ -3,6 +3,7 @@ require('dotenv').config();
 var bodyParser = require('body-parser');
 var express = require('express');
 var ejsLayouts = require('express-ejs-layouts');
+var moment = require('moment');
 var flash = require('connect-flash');
 var isLoggedIn = require('./middleware/isLoggedIn');
 var passport = require('./config/passportConfig');
@@ -26,7 +27,11 @@ app.use(function(req,res,next){
 	res.locals.currentUser = req.user;
 	res.locals.alerts = req.flash();
 	next();
-})
+});
+app.use(function(req,res,next){
+	res.locals.moment = moment;
+	next();
+});
 
 // Set up controllers
 app.use('/auth', require('./controllers/auth'));

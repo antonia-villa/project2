@@ -1,1 +1,8 @@
-<h2> A single Tag </h2>
+<h3>Contributions that use this data: </h3>
+<% tag.contributions.forEach(function(a){ %>
+	<div>
+		<a href='/contributions/<%= a.id %>'>
+			<%= a.title %>
+		</a>
+	</div>
+<% }); %>

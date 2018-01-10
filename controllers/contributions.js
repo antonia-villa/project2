@@ -10,7 +10,7 @@ router.get('/all', function(req,res){
 	});
 
 	db.contribution.findAll().then(function(contributions){
-		res.render('contributions/all')
+		res.render('contributions/all', {results: contributions})
 	})
 
 	// db.category.findAll().then(function(categories){
