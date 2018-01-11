@@ -9,25 +9,6 @@ body {
   height: 100%;
 }
 
-h1 {
-  font-size: 44px;
-  font-weight: bold;
-}
-
-h2 {
-    font-weight: 100;
-    font-size: 20px;
-    margin-top: 10px;
-}
-
-p {
-  margin: 0;
-}
-
-a {
-  color: inherit; 
-  text-decoration: underline; 
-}
 
 hr { 
     display: inline-block;
@@ -80,16 +61,20 @@ hr {
 
 
 /***********************/
-/* Data Visual Display Page
+/* Data Visual Container
 /***********************/
 
-#zip1{
-    width: 50%;
-    float: left;
-}
+/*********************/
+/*Tree Visual Styling*/
+/*********************/
+    rect {
+        stroke: white;
+        fill: #05668D;
+        opacity: 0.3;
+        stroke-width: 2px;
+    }
 
 
-#zip2{
-    width: 50%;
-    float: right;
-}
+/*********************/
+/* Contribution Container
+/*********************/

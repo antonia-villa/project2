@@ -1,42 +1,46 @@
+// Select data topics
+var dataSet1 = results[0];
+var dataSet2 = results[1]
 
-// Select data topics from results data
+var mainTopic1 = results[0].mainTopic1;
+var mainTopic2 = results[0].mainTopic2;
 
-var mainTopic1 = results[0][Object.keys(results[0])[Object.keys(results[0]).length-2]]
-var mainTopic2 = results[0][Object.keys(results[0])[Object.keys(results[0]).length-1]]
+function determineVisual(mainTopic, dataSet){
 
-function determineVisual(mainTopic){
 	// determine which visual to use based on the topic 
-	if(mainTopic === "Population"){
-		var data = treeData(mainTopic, results);
+	if(mainTopic.toString() == "Population"){
+		var data = treeData(mainTopic, dataSet);
+		
+		treeMap(data);
 		console.log('data', data);
 	}
 }
 
-function treeData(mainTopic, results){
+function treeData(mainTopic, dataSet){
 
 	var children = []
 
 	//Reformat Data for tree structure
-	for(keys in results){
-		if(keys.split('_')[0] == mainTopic){
+	for(keys in dataSet){
+		if((keys.split('_')[0]).toString() == mainTopic.toString().toLowerCase()){
 			var child = {
 		  		'statistic': keys,
-		  		'value': results[keys]
+		  		'value': dataSet[keys]
 			}
-		  	// Add to Data Set
-		  	children.push(child);
+				children.push(child);
 		}
 	}
 
-   
   	// Create Tree Structure
   	var tree = {
-      	cause: mainTopic,
-      	children: causeDataSet
+      	topic: mainTopic,
+      	children: children
   	};
-
   	return tree;
 }
 
 //Run Function
-determineVisual(mainTopic1);
+$(document).ready(function(){
+	determineVisual(mainTopic1, dataSet1);
+
+})

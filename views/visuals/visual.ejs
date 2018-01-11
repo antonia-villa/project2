@@ -1,58 +1,78 @@
-<div id="zip1">
-	<h2> <%= results[0].city%>:<%= results[0].zipcode%></h2>
-	<h3> <%= results[0].year%></h3>
-	<hr>
-	<div>
-		<table class="table table-striped">
-			<tbody>
-				<tr>
-					<td>Population:</td>
-					<td><%= results[0].population%></td>
-				</tr>
-				<tr>
-					<td> Average Age: </td>
-					<td><%= results[0].age %></td>
-				</tr>
-				<tr>
-					<td> Average Income: </td>
-					<td> &#36; <%= results[0].income%></td>
-				</tr>
-				<tr>
-					<td> % of Population in Poverty </td>
-					<td><%=results[0].percent_poverty%> &#37;</td>
-				</tr>
-			</tbody>
-		</table>
+<div id="mainDataContainer" class="container">
+<div class="row">
+	<div class = "col-md-6" id="displayLeft">
+		<div class="row">
+			<h2> <%= results[0].city%>:<%= results[0].zipcode%></h2>
+			<h3> <%= results[0].year%></h3>
+			<hr>
+			<div class = "overallStatsTable">
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<td>Population:</td>
+							<td><%= results[0].population%></td>
+						</tr>
+						<tr>
+							<td> Average Age: </td>
+							<td><%= results[0].age %></td>
+						</tr>
+						<tr>
+							<td> Average Income: </td>
+							<td> &#36; <%= results[0].income%></td>
+						</tr>
+						<tr>
+							<td> % of Population in Poverty </td>
+							<td><%=results[0].percent_poverty%> &#37;</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<svg>
+    			<g></g>
+			</svg>
+		</div>
 	</div>
+
+		<div class = "col-md-6" >
+		<div class="row">
+			<h2> <%= results[1].city%>:<%= results[1].zipcode%></h2>
+			<h3> <%= results[1].year%></h3>
+			<hr>
+			<div class = "overallStatsTable">
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<td>Population:</td>
+							<td><%= results[1].population%></td>
+						</tr>
+						<tr>
+							<td> Average Age: </td>
+							<td><%= results[1].age %></td>
+						</tr>
+						<tr>
+							<td> Average Income: </td>
+							<td> &#36; <%= results[1].income%></td>
+						</tr>
+						<tr>
+							<td> % of Population in Poverty </td>
+							<td><%=results[1].percent_poverty%> &#37;</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+		</div>
+	</div>
+
+
 </div>
-<div id="zip2">
-	<h2> <%= results[1].city%>:<%= results[1].zipcode%></h2>
-	<h3> <%= results[1].year%></h3>
-	<hr>
-	<div>
-		<table class="table table-striped">
-			<tbody>
-				<tr>
-					<td>Population:</td>
-					<td><%= results[1].population%></td>
-				</tr>
-				<tr>
-					<td> Average Age: </td>
-					<td><%= results[1].age %></td>
-				</tr>
-				<tr>
-					<td> Average Income: </td>
-					<td> &#36; <%= results[1].income%></td>
-				</tr>
-				<tr>
-					<td> % of Population in Poverty </td>
-					<td><%=results[1].percent_poverty%> &#37;</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
 </div>
 
+
+<div id="contributionContainer">
 <h2 class="text-center"> New Contribution </h2>
 
 <form method="post" action ="/contributions">
@@ -69,9 +89,13 @@
 	</div>
 	<input type="submit" value="Create Contribution" class= "btn btn-success">
 </form>
+</div>
 <script>
 	var results = <%- JSON.stringify(results) %>;
-	console.log('results var', results);
-	console.log('<%= results %>');
 </script>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/dataVisuals/visualOptions.js"></script>
+<script type="text/javascript" src="/js/dataVisuals/treeMapVisual2.js"></script>
