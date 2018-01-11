@@ -26,6 +26,10 @@ router.post('/', function(req, res){
 	var topic2Id = req.body.topic2
 
 	// select subtopic from topics array (/controllers/data_topics.js)
+	var topicName1 = topiclist.topics[topic1Id].topic
+	var topicName2 = topiclist.topics[topic2Id].topic
+	console.log('toicName1', topicName1);
+
 	var subtopics = []
 
 	for(i in topiclist.topics){
@@ -62,10 +66,9 @@ router.post('/', function(req, res){
 			var rawdata = response;
 			var topic = topiclist.topics[topic1Id].topic;
 			var data = dataCleanse.dataFormat(rawdata);
+			data.mainTopic1 = [topicName1];
+			data.mainTopic2 = [topicName2];
 			callback(null, data);
-			// var subdata = dataCleanse.subDataSets(rawdata, topic);
-			// var finalData = [data, subdata];
-			
 			return data;
 			});	
 	}
@@ -77,25 +80,22 @@ router.post('/', function(req, res){
 			var rawdata = response;
 			var topic = topiclist.topics[topic2Id].topic;
 			var data = dataCleanse.dataFormat(rawdata);
+			data.mainTopic1 = [topicName1];
+			data.mainTopic2 = [topicName2];
 			callback(null, data);
-			//var subdata = dataCleanse.subDataSets(rawdata, topic);
 			return data;
 			});	
 	}
 
 	async.parallel([fn1, fn2], function(err, results){
-		// req.session.id = id;
-		console.log('req.session.results', req.session.results);
-
 		req.session.results = results;
 		res.redirect('/visuals/visual');
-		// return results;
 	});
-	//console.log(apiResults);
 });
 
 router.get('/visual', function(req,res){
 	var results = req.session.results;
+	console.log('results', results);
 	res.render('visuals/visual', {results: results});
 });
 

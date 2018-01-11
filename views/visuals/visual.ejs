@@ -67,6 +67,11 @@
 	<div class = "form-group">
 	<input type="hidden" name= "tags" value=<%=[results[0].year, results[0].zipcode, results[0].city, results[1].zipcode, results[1].city]%>>
 	</div>
-	<input type="hidden" name="userId" value="<%=currentUser.dataValues.id%>">
 	<input type="submit" value="Create Contribution" class= "btn btn-success">
 </form>
+<script>
+	var results = <%- JSON.stringify(results) %>;
+	console.log('results var', results);
+	console.log('<%= results %>');
+</script>
+<script type="text/javascript" src="/js/dataVisuals/visualOptions.js"></script>
