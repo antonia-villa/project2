@@ -11,15 +11,14 @@ var async = require('async');
 
 
 router.get('/new', function(req, res){
-
 	res.render('visuals/new');
 });
 
 
 
 router.post('/', function(req, res){
-
 	// Input variables for API request from #dataInput form
+	//var userId = req.body.userId;
 	var zipcode1 = req.body.zipcode1;
 	var zipcode2 = req.body.zipcode2;
 	var year = req.body.year;
@@ -79,8 +78,10 @@ router.post('/', function(req, res){
 	}
 
 	async.parallel([fn1, fn2], function(err, results){
+		console.log('async request ', req);
+		// req.session.id = id;
 		req.session.results = results;
-		res.redirect('/visual');
+		res.redirect('/visuals/visual');
 		// return results;
 	});
 	//console.log(apiResults);
@@ -88,6 +89,9 @@ router.post('/', function(req, res){
 
 router.get('/visual', function(req,res){
 	var results = req.session.results;
+	//console.log(results);
+	console.log('req', req.body);
+	
 	res.render('visuals/visual', {results: results});
 });
 
