@@ -2,6 +2,8 @@ var express = require('express');
 var db = require('../models');
 var router = express.Router();
 var async = require('async');
+// var emitter = new EventEmitter()
+// emitter.setMaxListeners(100)
 
 
 router.get('/all', function(req,res){

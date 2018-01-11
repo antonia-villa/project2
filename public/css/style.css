@@ -38,6 +38,33 @@ hr {
 } 
 
 /***********************/
+/* Nav Bar Styling
+/***********************/
+.navbar {
+    margin-bottom: 0;
+} 
+
+/***********************/
+/* Data Entry Form 
+/***********************/
+#landingPage{
+    height: 300px;
+    width: 100%;
+    background-image: url('/img/skyline.jpg');
+    background-size: cover;
+    background-position: center;
+    color:white;
+}
+
+.layer {
+    text-align:center;
+    background-color: rgba(50, 50, 50, 0.7);
+    width: 100%;
+    height: 100%;
+    line-height: 300px
+}
+
+/***********************/
 /* Data Entry Form 
 /***********************/
 #entry1 {
@@ -57,18 +84,12 @@ hr {
 /***********************/
 
 #zip1{
-    display: block;
+    width: 50%;
     float: left;
-    box-sizing: border-box;
-    width: 48%;
-    margin: 0 2% 10px 0
 }
 
 
 #zip2{
-    display: block;
+    width: 50%;
     float: right;
-    box-sizing: border-box;
-    width: 48%;
-    margin: 0 0 10px 2%
 }

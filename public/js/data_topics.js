@@ -6,7 +6,7 @@ var topics = [
             ["poverty_white_alone", "poverty_black_alone", "poverty_asian_alone", "poverty_native_hawaiian_alone", "poverty_other_alone" ]
     },
     { 
-        "topic": "Demographics", 
+        "topic": "Population", 
         "id":"1", 
         "subTopic": 
             ["population_american_indian_alone", "population_white_alone", "population_black_alone", "population_asian_alone", "population_native_hawaiian_alone", "population_other_alone", "population_hispanic_origin"]

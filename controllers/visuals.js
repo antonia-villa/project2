@@ -59,27 +59,34 @@ router.post('/', function(req, res){
 	// Request data from API
 	function fn1(callback){
 			census.APIRequest(request1, function(response) {
-
 			var rawdata = response;
+			var topic = topiclist.topics[topic1Id].topic;
 			var data = dataCleanse.dataFormat(rawdata);
 			callback(null, data);
+			// var subdata = dataCleanse.subDataSets(rawdata, topic);
+			// var finalData = [data, subdata];
+			
 			return data;
 			});	
 	}
+
 
 	function fn2(callback){
 			census.APIRequest(request2, function(response) {
 
 			var rawdata = response;
+			var topic = topiclist.topics[topic2Id].topic;
 			var data = dataCleanse.dataFormat(rawdata);
 			callback(null, data);
+			//var subdata = dataCleanse.subDataSets(rawdata, topic);
 			return data;
 			});	
 	}
 
 	async.parallel([fn1, fn2], function(err, results){
-		console.log('async request ', req);
 		// req.session.id = id;
+		console.log('req.session.results', req.session.results);
+
 		req.session.results = results;
 		res.redirect('/visuals/visual');
 		// return results;
@@ -89,9 +96,6 @@ router.post('/', function(req, res){
 
 router.get('/visual', function(req,res){
 	var results = req.session.results;
-	//console.log(results);
-	console.log('req', req.body);
-	
 	res.render('visuals/visual', {results: results});
 });
 
