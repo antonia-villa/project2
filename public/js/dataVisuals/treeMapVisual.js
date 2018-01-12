@@ -10,8 +10,7 @@ function treeMap(data, svg){
     // Prepare our physical space
     var g = d3
     	.select("."+svg)
-    	.attr('width', width)
-    	.attr('height', height)
+ 
 
   //Append Tooltip
   var tool = d3.select("."+svg)

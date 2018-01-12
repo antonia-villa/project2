@@ -9,11 +9,11 @@
         <span class="icon-bar"></span>
       </button>
       <%if(!currentUser) {%>
-        <a class="navbar-brand" href="#">
-          <img alt="Brand" id="navBrand" src="/img/americanFlag.jpeg">
+        <a class="navbar-brand" href="/">
+          <img alt="Brand" id="navBrand" src="/img/globe.png">
         </a>
        <%}else{%>
-      <a class="navbar-brand" href="/main/profile">Antonia Villa</a>
+      <a class="navbar-brand" href="/main/profile"><%= currentUser.firstname+ " " +currentUser.lastname%></a>
       <%}%>
     </div>
 
@@ -22,23 +22,23 @@
       <ul class="nav navbar-nav">
         <%if(!currentUser) {%>
         <li>
-          <a href="/auth/login">Login</a>
+          <a href="/auth/login" class="navlink">Login</a>
         </li>
         <li>
-          <a href="/auth/signup">Sign Up!</a>
+          <a href="/auth/signup" class="navlink">Sign Up</a>
         </li>
         <%}else{%>
         <li>
-          <a href = "/visuals/new">Create Data Visual</a>
+          <a href = "/visuals/new" class="navlink">Search Data</a>
         </li>
         <li>
-          <a href = "/contributions/all">Contributions</a>
+          <a href = "/contributions/all" class="navlink">Contributions</a>
         </li>
         <li>
-          <a href="/tags/all">Data Tags</a>
+          <a href="/tags/all" class="navlink">Data Tags</a>
         </li>
-        <li>
-          <a href="/auth/logout">Log Out...I'll miss you</a>
+        <li >
+          <a href="/auth/logout" class="navlink">Log Out</a>
         </li>
         <%}%>
       </ul>
