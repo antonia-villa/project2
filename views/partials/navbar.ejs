@@ -8,7 +8,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <%if(!currentUser) {%>
+        <a class="navbar-brand" href="#">
+          <img alt="Brand" id="navBrand" src="/img/americanFlag.jpeg">
+        </a>
+       <%}else{%>
       <a class="navbar-brand" href="/main/profile">Antonia Villa</a>
+      <%}%>
     </div>
 
     <!-- Define the links -->

@@ -9,8 +9,8 @@ function treeMap(data){
       height = 250,
       color = d3.scale.category20c(),
       div = d3.select("#visual1")
-            .append("div")
-            .attr("id", "testVisual")
+            .append("svg")
+           
             
   
   //Append Tooltip
