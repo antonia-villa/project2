@@ -28,7 +28,7 @@ function treeData(mainTopic, dataSet){
 	for(keys in dataSet){
 		if((keys.split('_')[0]).toString() == mainTopic.toString().toLowerCase() && (keys.toString() != mainTopic.toString().toLowerCase())){
 			var child = {
-		  		'statistic': keys,
+		  		'statistic': keys.replace('_', ' '),
 		  		'value': dataSet[keys]
 			}
 
@@ -51,7 +51,7 @@ function donutData(mainTopic, dataSet){
 	for(keys in dataSet){
 		if((keys.split('_')[0]).toString() == mainTopic.toString().toLowerCase()){
 			var child = {
-		  		'statistic': keys,
+		  		'statistic': keys.replace('_', ' '),
 		  		'value': dataSet[keys]
 			}
 			donutData.push(child);
