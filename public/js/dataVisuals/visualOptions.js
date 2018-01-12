@@ -10,8 +10,8 @@ function determineVisual(mainTopic, dataSet, svg){
 	// determine which visual to use based on the topic 
 	if(mainTopic.toString() == "Population" ){
 		$('#'+svg+'Header').append('<h3 class="visualtopicHeading"> Distribution by Race</h3>');
-		var data = treeData(mainTopic, dataSet);
-		treeMap(data, svg);
+		var data = barChartData(mainTopic, dataSet);
+		barChart(data, svg);
 	} else if (mainTopic.toString() == "Employment"){
 		$('#'+svg+'Header').append('<h3 class="visualtopicHeading"> Employment vs Unemployment</h3>');
 		var data = donutData(mainTopic, dataSet);
@@ -44,7 +44,7 @@ function treeData(mainTopic, dataSet){
 	for(keys in dataSet){
 		if((keys.split('_')[0]).toString() == mainTopic.toString().toLowerCase() && (keys.toString() != mainTopic.toString().toLowerCase())){
 			var child = {
-		  		'statistic': keys.replace('_', ' '),
+		  		'statistic': keys.replace(/_/g, ' '),
 		  		'total': dataSet[keys]
 			}
 
@@ -67,13 +67,30 @@ function donutData(mainTopic, dataSet){
 	for(keys in dataSet){
 		if((keys.split('_')[0]).toString() == mainTopic.toString().toLowerCase()){
 			var child = {
-		  		'statistic': keys.replace('_', ' '),
+		  		'statistic': keys.replace(/_/g, ' '),
 		  		'total': dataSet[keys]
 			}
 			donutData.push(child);
 		}
 	}
 	return donutData;
+}
+
+function barChartData(mainTopic, dataSet){
+	console.log('data test', dataSet);
+
+	var barData = [];
+
+	for(keys in dataSet){
+		if((keys.split('_')[0]).toString() == mainTopic.toString().toLowerCase() && (keys.toString() != mainTopic.toString().toLowerCase())){
+			var object = {}
+			var stat = keys.replace(/_/g, ' ');
+			var value = dataSet[keys];
+			object[stat] = value;
+			barData.push(object);
+		}
+	}
+	return barData;
 }
 
 //Run Function
