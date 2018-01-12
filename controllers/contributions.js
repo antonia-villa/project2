@@ -1,28 +1,23 @@
 var express = require('express');
 var db = require('../models');
+var isLoggedIn = require('../middleware/isLoggedIn');
 var router = express.Router();
 var async = require('async');
-// var emitter = new EventEmitter()
-// emitter.setMaxListeners(100)
 
 
-router.get('/all', function(req,res){
+router.get('/all', isLoggedIn, function(req,res){
 	db.contribution.findAll({
-		include:[db.user]
-	});
-
-	db.contribution.findAll().then(function(contributions){
+		where: {userId: req.user.id}
+	}).then(function(contributions){
 		res.render('contributions/all', {results: contributions})
 	})
 
-	// db.category.findAll().then(function(categories){
-	// 	res.render('categories/all', {categories: categories})
-	// });
 });
 
 //res.status(status).send(body)
-router.post('/', function(req, res){
+router.post('/', isLoggedIn, function(req, res){
 	var tags = req.body.tags.split(',');
+	req.body.userId = req.user.id;
 
 	db.contribution.create(req.body).then(function(createdContribution){
 			async.forEach(tags, function(t, callback){

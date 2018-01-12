@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
 contribution.associate = function (models) {
     models.contribution.belongsTo(models.user);
     models.contribution.belongsToMany(models.tag, {through: models.contribution_tag });
-  
 };
   return contribution;
 };
