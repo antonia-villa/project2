@@ -44,12 +44,9 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 
 app.get('/', function(req, res){
-	// Set as res.send first to test link
-	//res.send('home page coming soon!');
-	// Change to res.render when home page is set up
 	res.render('home');
 });
 
 
 
-app.listen(3000 || process.env.PORT);
+app.listen(process.env.PORT || 3000);
