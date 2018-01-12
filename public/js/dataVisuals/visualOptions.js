@@ -12,6 +12,11 @@ function determineVisual(mainTopic, dataSet, svg){
 		$('#'+svg+'Header').append('<h3 class="visualtopicHeading"> Distribution by Race</h3>');
 		var data = treeData(mainTopic, dataSet);
 		treeMap(data, svg);
+	} else if (mainTopic.toString() == "Employment"){
+		$('#'+svg+'Header').append('<h3 class="visualtopicHeading"> Employment vs Unemployment</h3>');
+		var data = donutData(mainTopic, dataSet);
+		console.log('donutData', data);
+		donutChart(data, svg);
 	}
 }
 
@@ -40,11 +45,38 @@ function treeData(mainTopic, dataSet){
   	return tree;
 }
 
+function donutData(mainTopic, dataSet){
+	var donutData = [];
+
+	for(keys in dataSet){
+		if((keys.split('_')[0]).toString() == mainTopic.toString().toLowerCase()){
+			var child = {
+		  		'statistic': keys,
+		  		'value': dataSet[keys]
+			}
+			donutData.push(child);
+		}
+	}
+	return donutData;
+}
+
 //Run Function
 $(document).ready(function(){
-	var svg1 = $('.visual1').attr('class');
-	var svg2 = $('.visual2').attr('class');
-	determineVisual(mainTopic1, dataSet1, svg1);
-	determineVisual(mainTopic1, dataSet2, svg2);
 
-})
+	// Select SVG Element to build MainTopic1 Visual
+	var svg1_1 = $('.visual1_1').attr('class');
+	var svg2_1 = $('.visual2_1').attr('class');
+
+	// Select SVG Element to build MainTopic2 Visual
+	var svg1_2 = $('.visual1_2').attr('class');
+	var svg2_2 = $('.visual2_2').attr('class');
+
+	// Determine Visual for the Main Topic 1 Selected
+	determineVisual(mainTopic1, dataSet1, svg1_1);
+	determineVisual(mainTopic1, dataSet2, svg2_1);
+
+	// Determine Visual for the Main Topic 2 Selected
+	determineVisual(mainTopic2, dataSet1, svg1_2);
+	determineVisual(mainTopic2, dataSet2, svg2_2);
+
+});
