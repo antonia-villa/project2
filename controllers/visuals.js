@@ -16,14 +16,14 @@ router.get('/new', function(req, res){
 });
 
 
-//Testing Post Rout
+// Testing Post Rout
 router.post('/', function(req, res){
 	var results = testData.results
 	res.render('visuals/visual', {results: results});
 
 })
 
-/// Working Post Route
+// Live Post Route
 // router.post('/', function(req, res){
 // 	// Input variables for API request from #dataInput form
 // 	//var userId = req.body.userId;
@@ -100,11 +100,11 @@ router.post('/', function(req, res){
 // 	});
 // });
 
-// router.get('/visual', function(req,res){
-// 	var results = req.session.results;
-// 	console.log('results', results);
-// 	res.render('visuals/visual', {results: results});
-// });
+router.get('/visual', function(req,res){
+	var results = req.session.results;
+	console.log('results', results);
+	res.render('visuals/visual', {results: results});
+});
 
 
 module.exports = router;

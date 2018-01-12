@@ -39,6 +39,7 @@ app.use('/main', require('./controllers/main'));
 app.use('/contributions', require('./controllers/contributions'));
 app.use('/tags', require('./controllers/tags'));
 app.use('/visuals', require('./controllers/visuals'));
+
 app.use(express.static(path.join(__dirname, '/public')));
 
 

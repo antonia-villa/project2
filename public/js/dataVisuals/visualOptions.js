@@ -8,7 +8,7 @@ var mainTopic2 = results[0].mainTopic2;
 function determineVisual(mainTopic, dataSet, svg){
 
 	// determine which visual to use based on the topic 
-	if(mainTopic.toString() == "Population"){
+	if(mainTopic.toString() == "Population" ){
 		$('#'+svg+'Header').append('<h3 class="visualtopicHeading"> Distribution by Race</h3>');
 		var data = treeData(mainTopic, dataSet);
 		treeMap(data, svg);
@@ -17,7 +17,23 @@ function determineVisual(mainTopic, dataSet, svg){
 		var data = donutData(mainTopic, dataSet);
 		console.log('donutData', data);
 		donutChart(data, svg);
+	} else if (mainTopic.toString() == "Poverty"){
+		$('#'+svg+'Header').append('<h3 class="visualtopicHeading"> Poverty</h3>');
+		var data = donutData(mainTopic, dataSet);
+		console.log('donutData', data);
+		donutChart(data, svg);
+	} else if (mainTopic.toString() == "Commute"){
+		$('#'+svg+'Header').append('<h3 class="visualtopicHeading">Commute</h3>');
+		var data = treeData(mainTopic, dataSet);
+		console.log('tree data', data);
+		treeMap(data, svg);
+	} else if (mainTopic.toString() == "Education"){
+		$('#'+svg+'Header').append('<h3 class="visualtopicHeading">Education</h3>');
+		var data = treeData(mainTopic, dataSet);
+		console.log('tree data', data);
+		treeMap(data, svg);
 	}
+
 }
 
 function treeData(mainTopic, dataSet){
@@ -29,7 +45,7 @@ function treeData(mainTopic, dataSet){
 		if((keys.split('_')[0]).toString() == mainTopic.toString().toLowerCase() && (keys.toString() != mainTopic.toString().toLowerCase())){
 			var child = {
 		  		'statistic': keys.replace('_', ' '),
-		  		'value': dataSet[keys]
+		  		'total': dataSet[keys]
 			}
 
 				children.push(child);
@@ -52,7 +68,7 @@ function donutData(mainTopic, dataSet){
 		if((keys.split('_')[0]).toString() == mainTopic.toString().toLowerCase()){
 			var child = {
 		  		'statistic': keys.replace('_', ' '),
-		  		'value': dataSet[keys]
+		  		'total': dataSet[keys]
 			}
 			donutData.push(child);
 		}

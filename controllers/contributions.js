@@ -14,7 +14,7 @@ router.get('/all', isLoggedIn, function(req,res){
 
 });
 
-//res.status(status).send(body)
+
 router.post('/', isLoggedIn, function(req, res){
 	var tags = req.body.tags.split(',');
 	req.body.userId = req.user.id;

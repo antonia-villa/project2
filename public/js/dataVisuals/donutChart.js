@@ -16,7 +16,7 @@ function donutChart(data, svg){
     var arc = d3.svg.arc()              //this will create <path> elements for us using arc data
         .outerRadius(r);
     var pie = d3.layout.pie()           //this will create arc data for us given a list of values
-        .value(function(d) { return d.value; });    //we must tell it out to access the value of each element in our data array
+        .value(function(d) { return d.total; });    //we must tell it out to access the value of each element in our data array
     var arcs = vis.selectAll("g.slice")     //this selects all <g> elements with class slice (there aren't any yet)
         .data(pie)                          //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties) 
         .enter()                            //this will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
@@ -33,6 +33,6 @@ function donutChart(data, svg){
                 return "translate(" + arc.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
             })
             .attr("text-anchor", "middle")                          //center the text on it's origin
-            .text(function(d, i) { return data[i].statistic +" "+data[i].value; });        //get the label from our original data array
+            .text(function(d, i) { return data[i].statistic +" "+data[i].total; });        //get the label from our original data array
 
 }
