@@ -5,16 +5,18 @@ body {
   font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
   position: relative;
   height: 100%;
+  margin:0;
 }
 
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
-hr { 
-    display: inline-block;
-    width: 950px;
-    border-style: inset;
-    border-width: .5px;
-    border-color:#9e9c9c;
-} 
+.Site-content {
+  flex: 1;
+}
 
 a {
   color:white;
@@ -82,20 +84,24 @@ p {
 /* Landing Page
 /***********************/
 #landingPage{
-    height: 250px;
-    width: 100%;
-    background-image: url('/img/skyline.jpg');
-    background-size: cover;
-    background-position: center;
-    background-color: rgba(0,0,0,.10);
-    color:white;
+  display: inline-block;
+  height: 270px;
+  width: 100%;
+  background-image: url('/img/skyline.jpg');
+  background-size: cover;
+  margin-left: 0;
+  margin-right: 0;
+  background-color: rgba(50, 50, 50, 0.8);
+  color:white;
+  margin-bottom:auto;
 }
-
-.layer {
-    height: 250px;
+/* UPDATING HERE */
+#layer {
+    height: 100%;
     width: 100%;
     text-align:center;
     background-color: rgba(50, 50, 50, 0.8);
+    background-size: cover;
 }
 
 #homepageTitle{
@@ -115,10 +121,11 @@ p {
 }
 
 .footerText {
-    height: 50px;
-    margin: 0;
-    background-color: #323a44;
+  height: 50px;
+  background-color: #323a44;
+  margin-top: auto;
 }
+
 
 #homeFooterText {
   line-height: 50px;
