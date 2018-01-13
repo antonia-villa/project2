@@ -1,4 +1,4 @@
-function donutChart(data, svg){
+function donutChartD3(data, svg){
 
 	var w = 300,                        
     h = 300,                            

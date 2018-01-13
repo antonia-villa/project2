@@ -1,4 +1,4 @@
-function treeMap(data, svg){
+function treeMapd3(data, svg){
 
     var width = 500,
         height = 300,

@@ -157,38 +157,14 @@ p {
 }
 
 /*********************/
-/*Tree Visual Styling*/
+/*Bar Chart  Styling*/
 /*********************/
-rect {
-    stroke: white;
-    fill: #05668D;
-    opacity: 0.3;
-    stroke-width: 2px;
-}
-
-.toolTip {
-  position: absolute;
-  display: none;
-  width: 200px;
-  height: auto;
-  overflow-wrap: normal;
-  background: none repeat scroll 0 0 white;
-  box-shadow: -3px 3px 15px #888888;
-  color: black;
-  font-size: 24px;
-  padding: 5px;
+#barChart_data1_viz1 {
   text-align: center;
 }
 
-
-.visual1_1{
-  height:100%;
-  width:100%;
-}
-
-.visual2_1{
-  height:100%;
-  width:100%;
+#barChart_data2_viz1 {
+  text-align: center;
 }
 
 /*********************/

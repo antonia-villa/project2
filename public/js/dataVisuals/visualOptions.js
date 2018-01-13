@@ -5,37 +5,22 @@ var dataSet2 = results[1]
 var mainTopic1 = results[0].mainTopic1;
 var mainTopic2 = results[0].mainTopic2;
 
-function determineVisual(mainTopic, dataSet, svg){
+function determineVisual(mainTopic, dataSet, divId){
 
 	// determine which visual to use based on the topic 
 	if(mainTopic.toString() == "Population" ){
-		$('#'+svg+'Header').append('<h3 class="visualtopicHeading"> Distribution by Race</h3>');
-		var data = barChartData(mainTopic, dataSet);
-		barChart(data, svg);
+		$('#'+divId+'_header').append('<h3 class="visualtopicHeading"> Distribution by Race</h3>');
+		var data = chartsJSData(mainTopic, dataSet);
+		barChart(mainTopic, data, divId);
 	} else if (mainTopic.toString() == "Employment"){
-		$('#'+svg+'Header').append('<h3 class="visualtopicHeading"> Employment vs Unemployment</h3>');
-		var data = donutData(mainTopic, dataSet);
-		console.log('donutData', data);
-		donutChart(data, svg);
-	} else if (mainTopic.toString() == "Poverty"){
-		$('#'+svg+'Header').append('<h3 class="visualtopicHeading"> Poverty</h3>');
-		var data = donutData(mainTopic, dataSet);
-		console.log('donutData', data);
-		donutChart(data, svg);
-	} else if (mainTopic.toString() == "Commute"){
-		$('#'+svg+'Header').append('<h3 class="visualtopicHeading">Commute</h3>');
-		var data = treeData(mainTopic, dataSet);
-		console.log('tree data', data);
-		treeMap(data, svg);
-	} else if (mainTopic.toString() == "Education"){
-		$('#'+svg+'Header').append('<h3 class="visualtopicHeading">Education</h3>');
-		var data = treeData(mainTopic, dataSet);
-		console.log('tree data', data);
-		treeMap(data, svg);
+		$('#'+divId+'_header').append('<h3 class="visualtopicHeading"> Employment vs Unemployment</h3>');
+		var data = chartsJSData(mainTopic, dataSet);
+		donutChart(mainTopic, data, divId);
 	}
 
 }
 
+// Used for D3 TreeData
 function treeData(mainTopic, dataSet){
 
 	var children = []
@@ -61,6 +46,7 @@ function treeData(mainTopic, dataSet){
   	return tree;
 }
 
+// Used for D3 Donut Data
 function donutData(mainTopic, dataSet){
 	var donutData = [];
 
@@ -76,40 +62,44 @@ function donutData(mainTopic, dataSet){
 	return donutData;
 }
 
-function barChartData(mainTopic, dataSet){
-	console.log('data test', dataSet);
-
-	var barData = [];
+// Charts JS Data
+function chartsJSData(mainTopic, dataSet){
+	
+	var values = [];
+  	var labels = [];
 
 	for(keys in dataSet){
 		if((keys.split('_')[0]).toString() == mainTopic.toString().toLowerCase() && (keys.toString() != mainTopic.toString().toLowerCase())){
-			var object = {}
-			var stat = keys.replace(/_/g, ' ');
-			var value = dataSet[keys];
-			object[stat] = value;
-			barData.push(object);
+			var label = String(keys.replace(/_/g, ' '));
+			labels.push(label);
+
+			var value = Number(dataSet[keys]);
+			values.push(value);
 		}
 	}
+	var barData = [labels, values]
 	return barData;
 }
 
 //Run Function
 $(document).ready(function(){
 
-	// Select SVG Element to build MainTopic1 Visual
-	var svg1_1 = $('.visual1_1').attr('class');
-	var svg2_1 = $('.visual2_1').attr('class');
-
-	// Select SVG Element to build MainTopic2 Visual
-	var svg1_2 = $('.visual1_2').attr('class');
-	var svg2_2 = $('.visual2_2').attr('class');
+	// MAIN TOPIC 1
+	// Select element to build MainTopic1 Visual (data1_viz1 and data2_viz1)
+	var data1_viz1 = $('#data1_viz1').attr('id');
+	var data2_viz1 = $('#data2_viz1').attr('id');
 
 	// Determine Visual for the Main Topic 1 Selected
-	determineVisual(mainTopic1, dataSet1, svg1_1);
-	determineVisual(mainTopic1, dataSet2, svg2_1);
+	determineVisual(mainTopic1, dataSet1, data1_viz1);
+	determineVisual(mainTopic1, dataSet2, data2_viz1);
 
-	// Determine Visual for the Main Topic 2 Selected
-	determineVisual(mainTopic2, dataSet1, svg1_2);
-	determineVisual(mainTopic2, dataSet2, svg2_2);
+	// MAIN TOPIC 1
+	// Select element to build MainTopic1 Visual (data1_viz1 and data2_viz1)
+	var data1_viz2 = $('#data1_viz2').attr('id');
+	var data2_viz2 = $('#data2_viz2').attr('id');
+
+	// Determine Visual for the Main Topic 1 Selected
+	determineVisual(mainTopic2, dataSet1, data1_viz2);
+	determineVisual(mainTopic2, dataSet2, data2_viz2);
 
 });
