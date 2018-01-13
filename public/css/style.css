@@ -147,15 +147,66 @@ p {
 	float:right;
 	margin: auto 0;
 }
+/********************************************************/
+/* /Visuals/Viaul */
+/********************************************************/
 
-
-/***********************/
-/* Data Visual Container
-/***********************/
-#visualtopicHeading{
-  text-align: center;
+#mainDataContainer {
+  width: 90%;
+  margin:auto !important;
 }
 
+.rowHeaderText{
+  background-color: #c5c6c2;
+  border-radius: 5px;
+}
+
+.cityZipHeader{
+  text-align:center;
+  margin-top: 20px;
+  font-size: 24px; 
+  color: #333333; 
+  margin: 0px;
+}
+
+.yearHeader{
+  text-align:center;
+  font-size: 18px;
+  font-weight: normal;
+  margin: 0px;
+  color: #333333; 
+}
+
+/***********************/
+/* Table */
+/***********************/
+.overallStatsTable {
+  border: .5px solid #c5c6c2;
+}
+
+table {
+  margin: 0px !important;
+}
+tr {
+  padding: 2px !important;
+}
+
+td {
+  padding: 2px !important;
+  padding-bottom: 0px;
+}
+
+/*********************/
+/* Data Viz Container
+/*********************/
+.visualtopicHeading {
+  text-align: center;
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: bold;
+  color: #323a44;
+
+}
 /*********************/
 /*Bar Chart  Styling*/
 /*********************/
