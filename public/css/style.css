@@ -73,8 +73,8 @@ p {
 }
 
 .navlink {
-  font-size: 16px;
-  font-weight: 350;
+  font-size: 20px;
+  font-weight: 400;
   color:white !important;
   text-transform: uppercase !important;
 }
@@ -97,7 +97,8 @@ p {
 }
 /* UPDATING HERE */
 #layer {
-    height: 100%;
+  display:block;
+    height: 700px;
     width: 100%;
     text-align:center;
     background-color: rgba(50, 50, 50, 0.8);
@@ -108,16 +109,30 @@ p {
   margin: 0;
   padding-top:80px;
   font-size: 40px;
+  font-weight: 600;
 }
 
 #homepageSubTiltle{
   font-size: 20px;
   font-style: italic;
+  margin-bottom: 30px;
 }
 
-#dataExplanation {
-  margin-left: 150px;
-  margin-right: 150px;
+.dataExplanation {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  border-radius: 3px;
+  background-color: rgba(247,247,245,.8);
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.explanationTitle{
+  padding-bottom: 15px;
 }
 
 .footerText {
