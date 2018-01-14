@@ -1,8 +1,6 @@
 
-// To make string camel case
-function camelize(str) {
-      return str.replace(/\W+(.)/g, function(match, chr)
-       {
-            return chr.toUpperCase();
-        });
+// Capitalize First Letter in Each Word
+function toTitleCase(str)
+{
+    return str.toString().replace(/\w\S*/g, function(txt){return txt.charAt(0).toString().toUpperCase() + txt.substr(1).toString().toLowerCase();});
 }

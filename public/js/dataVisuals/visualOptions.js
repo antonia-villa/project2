@@ -9,7 +9,7 @@ function determineVisual(mainTopic, dataSet, divId){
 
 	// determine which visual to use based on the topic 
 	if(mainTopic.toString() == "Population" ){
-		$('#'+divId+'_header').append('<h3 class="visualtopicHeading"> Distribution by Race</h3>');
+		$('#'+divId+'_header').append('<h3 class="visualtopicHeading"> Demographic Distribution</h3>');
 		var data = chartsJSData(mainTopic, dataSet);
 		barChart(mainTopic, data, divId);
 	} else if (mainTopic.toString() == "Employment"){
@@ -64,22 +64,42 @@ function donutData(mainTopic, dataSet){
 
 // Charts JS Data
 function chartsJSData(mainTopic, dataSet){
-	
-	var values = [];
-  	var labels = [];
-
+	// Extract subData Set
+	var subDataSet = {};
 	for(keys in dataSet){
 		if((keys.split('_')[0]).toString() == mainTopic.toString().toLowerCase() && (keys.toString() != mainTopic.toString().toLowerCase())){
 			var label = String(keys.replace(/_/g, ' '));
-			labels.push(label);
-
-			var value = Number(dataSet[keys]);
-			values.push(value);
+			subDataSet[label] = Number(dataSet[keys]);
 		}
 	}
-	var barData = [labels, values]
+	
+	// Sort data by values
+	function sort(obj) {
+	  return Object.keys(obj).sort(function(a, b) {
+	    return obj[b] - obj[a];
+	  });
+	}
+	var sorted = sort(subDataSet);
+	var sortedData = sorted.map(function(key) { 
+  		return {[key]: subDataSet[key]}
+	});
+    
+	// Crete array of values and labels for ChartsJS
+	var values = [];
+  	var labels = [];
+  	var total;
+
+  	sortedData.forEach(function(item){
+  		labels.push(toTitleCase(Object.keys(item)));
+  		values.push(Number(Object.values(item)));
+  	})
+
+  	var total = values.reduce((a, b) => a + b, 0);
+
+	var barData = [labels, values, total]
 	return barData;
 }
+
 
 //Run Function
 $(document).ready(function(){
