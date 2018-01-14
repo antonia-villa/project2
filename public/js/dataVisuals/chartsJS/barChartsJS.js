@@ -16,22 +16,37 @@ function barChart(mainTopic, dataSet, divId){
   
   var options = {
       responsive: true,
-      title: {
-          display: true,
-          position: "top",
-          text: mainTopic,
-          fontSize: 16,
-          fontColor: "#111"
-      },
-      legend: {
-          display: false,
-          position: "bottom",
-      },
       scales: {
         xAxes: [{
           display: false
+        }],
+        yAxes: [{
+          barPercentage: 0.5
         }]
+      },
+      elements: {
+        rectangle: {
+          borderSkipped: 'bottom',
+        }
+    },
+    legend: {
+   labels: {
+      generateLabels: function(chart) {
+         var labels = chart.data.labels;
+         var dataset = chart.data.datasets[0];
+         var legend = labels.map(function(label, index) {
+            return {
+               datasetIndex: 0,
+               fillStyle: dataset.backgroundColor && dataset.backgroundColor[index],
+               strokeStyle: dataset.borderColor && dataset.borderColor[index],
+               lineWidth: dataset.borderWidth,
+               text: label
+            }
+         });
+         return legend;
       }
+   }
+}
   };
 
   var barChart = new Chart(document.getElementById(id), {
@@ -40,12 +55,15 @@ function barChart(mainTopic, dataSet, divId){
       labels: labels,
       datasets: [
         {
-          label: mainTopic,
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3cba9f"],
-          data: values
+          label: false,
+          backgroundColor: ['#1F77B4', '#FF7F0E', '#2CA02C', '#D62728', '#9467BD', '#8C564B', '#CFECF9', '#7F7F7F', '#BCBD22', '#17BECF'],
+        borderWidth: 2,
+        hoverBorderWidth: 0,
+        data: values
         }
       ]
     },
+    hoverBorderWidth: 10,
     options: options
   });
 
