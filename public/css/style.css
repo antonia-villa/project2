@@ -222,6 +222,11 @@ p {
    display: flex;
   align-items: center;
   justify-content: center;
+  color:blue;
+}
+
+.darkHR{
+  border: .5px solid #323a44;
 }
 
 
