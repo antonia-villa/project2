@@ -1,8 +1,21 @@
-<h3>Contributions that use this data: </h3>
-<% tag.contributions.forEach(function(a){ %>
-	<div>
-		<a href='/contributions/<%= a.id %>'>
-			<%= a.title %>
-		</a>
+<div class="formContainer">
+	<div class="formHeaderContainer">
+		<h2 class="text-center formHeader">
+		Other observations with this data tag: </h2>
+	</div>
+<% if(contributions.length <=0){ %>
+	<h2> There are no other observations with a similar data tag! </h2>
+<%} else {%>
+<% contributions.forEach(function(a){ %>
+    <div class = "dataContributions">
+	    <ul class="contributionList">
+	    	<li>
+				<a class ="contributionLink" href='/contributions/<%= a.id %>'>
+				<%= a.title %>
+				</a>
+			</li>
+			<hr id ="listItemHR">
+		</ul>
 	</div>
 <% }); %>
+<%}%>

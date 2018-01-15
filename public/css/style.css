@@ -71,6 +71,12 @@ p {
   height: 25px;
 }
 
+.navbar-brand {
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase !important;
+}
+
 .navbar-header{
   background-color: #323a44;
   color: white;
@@ -165,14 +171,16 @@ p {
   bottom:0;
   left:0;
   right:0;
+  margin-top: 100px;
   overflow:hidden;
   z-index:-1;
   background-image: url('/img/map1.png');
   background-size: cover;
-  
 }
 
 #mainPageContent{
+  margin-top: 100px;
+  z-index:1;
   opacity: 1;
   margin-top: 70px;
   margin-left: 20px;
@@ -193,23 +201,48 @@ p {
 
 
 #mainPageToolInfo {
-  background-color: #BCBCBC;
+  margin-left: 35px;
+  margin-right: 35px;
+}
+
+.toolExplanationTitle {
+  margin: 0;
+  padding: 0;
 }
 
 .homePageForm{
   margin: 20px;
 }
 
+.dataInstructions {
+  font-size: 16px;
+}
 
-
+#getStarted{
+   display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 /***********************/
 /* Data Entry Form 
 /***********************/
-#entry1 {
-	float:left;
-	margin: auto 0;
+
+#dataEntryForm{
+  margin-top: 20px;
+  margin-left: 200px;
+  margin-right: 200px;
+  background-color: #e8e8e8;
+  border: 1px solid #6f7376;
+  border-radius: 5px;
+  padding: 10px;
+}
+#dataInput {
+	margin-top: 20px;
+  font-size: 18px;
+  text-align: center;
+
 }
 
 
@@ -299,10 +332,11 @@ td {
 }
 
 /*********************/
-/* Contribution Container
+/* Contribution Container (visual page - "Make a contribution")
 /*********************/
 
-#contributionContainer {
+.formContainer {
+  margin-top: 50px;
   margin-left: 50px;
   margin-right: 50px;
   margin-bottom: 20px;
@@ -311,7 +345,7 @@ td {
   border-radius: 5px;
 }
 
-#newContributionHeader {
+.formHeaderContainer {
   margin-bottom: 10px;
   width: 100%;
   background-color: #323a44;
@@ -319,8 +353,9 @@ td {
   font-weight: 600;
 }
 
-#newContr {
-  font-size: 24px;
+.formHeader {
+  font-size: 26px;
+  font-weight: 600;
   padding-top: 5px;
   padding-bottom: 5px;
   margin: 0px;
@@ -337,7 +372,46 @@ td {
 }
 
 
-#contrBtn {
+.customBtn {
   margin: 10px;
   float: right;
+}
+
+.dataTags {
+  color: #f37a4d;
+}
+
+/***************************/
+/* All Contributions */
+/***************************/
+
+ul.contributionList {
+list-style-image: url('/img/small_globe.png');
+}
+
+.contributionContent{
+  color: #323a44;
+  font-size: 16px;
+  font-style: italic;
+  margin: 0;
+}
+.contributionLink{
+  color: #f37a4d;
+  font-weight:600;
+  font-size: 28px;
+}
+
+#listItemHR {
+  margin-right: 20px;
+  border-top: 1px solid #323a44;
+}
+
+/***************************/
+/* Single Contributions */
+/***************************/
+
+.dataObservationContent {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-bottom: 30px;
 }

@@ -13,12 +13,10 @@ router.get('/all', isLoggedIn, function(req,res){
 		var contributionIds = usersContribs.map(function(item){
 			return item.id;
 		});
-		console.log(contributionIds);
 
 		db.contribution_tag.findAll({
 			where: {contributionId: contributionIds}
 		}).then(function(tags){
-			console.log(tags);
 			var tagIds = tags.map(function(item){
 				return item.tagId;
 			});
@@ -33,12 +31,23 @@ router.get('/all', isLoggedIn, function(req,res){
 });
 
 
-router.get('/:id', function(req, res){
-	db.tag.find({
-		where:{id: req.params.id},
-		include: [db.contribution]
-	}).then(function(tag){
-		res.render('tags/single', {tag: tag});
+router.get('/:id', isLoggedIn, function(req, res){
+	db.contribution_tag.findAll({
+		attributes: ['contributionId'], 
+		where: {tagId: req.params.id}
+	}).then(function(contributions){
+		var contributionIds = contributions.map(function(item){
+			return item.contributionId;
+		});
+		console.log('contributionIds', contributionIds);
+		db.contribution.findAll({
+			where: {id: contributionIds}
+		}).then(function(contributions){
+			console.log(contributions);
+			res.render('tags/single', {contributions: contributions})
+		});
+		
+		//res.render('tags/single', {tag: tag});
 	});
 })
 

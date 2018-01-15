@@ -94,9 +94,9 @@
 
 <hr>
 
-<div id="contributionContainer">
-	<div id="newContributionHeader">
-		<h2 class="text-center" id="newContr"> New Contribution </h2>
+<div class="formContainer">
+	<div class="formHeaderContainer">
+		<h2 class="text-center formHeader"> New Contribution </h2>
 	</div>
 
 	<form method="post" action ="/contributions">
@@ -112,7 +112,7 @@
 	<input type="hidden" name= "tags" value=<%=[results[0].year, results[0].zipcode, results[0].city, results[1].zipcode, results[1].city]%>>
 	</div>
 
-	<input type="submit" value="Create Contribution" class= "btn btn-success" id="contrBtn">
+	<input type="submit" value="Create Contribution" class= "btn btn-success customBtn">
 	</form>
 </div>
 <script>

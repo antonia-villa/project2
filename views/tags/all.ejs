@@ -1,10 +1,20 @@
-<h2> All available tags </h2>
-<% if(tags && tags.length > 0){ %>
-	<% tags.forEach(function(t){ %>
-		<div>
-			<%= t.content %>
+
+<div class="formContainer">
+	<div class="formHeaderContainer">
+		<h2 class="text-center formHeader">
+			Data Tags Searched:
+		</h2>
+	</div>
+	<% if(tags.length <=0){ %>
+		<h2> You haven't search any data yet. There are no current favorited data tags.</h2>
+	<%} else {%>
+		<% tags.forEach(function(t){ %>
+		<div class = "dataContributions">
+			<ul class="contributionList">
+	    		<li>
+				<a class="contributionLink" href="/tags/<%=t.id%>"><%= t.content %>
+				</a>
+			</li>
 		</div>
 	<% }); %>
-<% } else { %>
-	<h3> No Tags Yet! </h3>
 <% } %>

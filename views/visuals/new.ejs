@@ -1,12 +1,14 @@
-<div>
+<div class="formContainer">
+	<div class="formHeaderContainer">
+		<h2 class="text-center formHeader"> Choose Dataset </h2>
+	</div>
 	<form method="post" action="/visuals" id="dataInput">
 		<div id="entry1">
 			<div class="form-group">
-				<label for="zipcode1">Enter Zip Code:</label>
+				<label for="zipcode1">Zip Code:</label>
 			  	<input name="zipcode1" type="text" placeholder= "Zip Code" pattern= "[0-9]{5}" required/>
-	  		</div>
-	  		<div class="form-group">
-				<label for="zipcode2">Enter a Comparison Code:</label>
+	
+				<label for="zipcode2">Comparison Code:</label>
 			  	<input name="zipcode2" type="text" placeholder= "Zip Code" pattern= "[0-9]{5}" required/>
 	  		</div>
 			 <div class="form-group">
@@ -31,16 +33,14 @@
 			</div>
 			<div class="form-group">
 				<select name="topic1" id="topic1">
-					<option> Choose a data topic: </option>
+					<option> Data topic: </option>
 				</select>
-			</div>
-			<div class="form-group">
 				<select name="topic2" id="topic2">
-					<option> Choose a comparison data type: </option>
+					<option> Comparison data type: </option>
 				</select>
 			</div>
 		</div>			
-		<input type="submit" value="View Data" class= "btn btn-success">
+		<input type="submit" value="View Data" class= "btn btn-success customBtn">
 
   	</form>
   </div>

@@ -1,13 +1,16 @@
-<h2> HERE IS A SINGLE CONTRIBUTION </h2>
+<div class="formContainer">
+	<div class="formHeaderContainer">
+		<h2 class="text-center formHeader"> Data Observation </h2>
+	</div>
 
-<h2 class = "text-center"> <%= result.title %></h2>
-<p>
-	<%= result.content %>
-</p>
-<div>
-	<%result.tags.forEach(function(t){ %>
-		<a href="/tags/<%= t.id %>">#<%=t.content %></a>
-	<% }); %>
+	<h2 class = "text-center"> <strong>Title: </strong> <%= result.title %></h2>
+	<div class="dataObservationContent">
+		<p><%= result.content %></p>
+		<%result.tags.forEach(function(t){ %>
+			<a class="dataTags" href="/tags/ <%= t.id %>">#<%=t.content %></a>
+		<% }); %>
+		<br>
+		<em>Written on <%=moment(result.createdAt).calendar() %></em>
+		<hr>
+	</div>
 </div>
-<em>Written on <%=moment(result.createdAt).calendar() %></em>
-<hr>

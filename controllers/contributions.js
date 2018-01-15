@@ -7,9 +7,10 @@ var async = require('async');
 
 router.get('/all', isLoggedIn, function(req,res){
 	db.contribution.findAll({
-		where: {userId: req.user.id}
+		where: {userId: req.user.id},
 	}).then(function(contributions){
-		res.render('contributions/all', {results: contributions})
+		console.log('contributions', contributions);
+		res.render('contributions/all', {contribution: contributions})
 	})
 
 });
@@ -44,7 +45,7 @@ router.post('/', isLoggedIn, function(req, res){
 	});
 })
 
-router.get('/:id', function(req,res){
+router.get('/:id', isLoggedIn, function(req,res){
 	db.contribution.findOne({
 		where: {id: req.params.id},
 		include: [db.tag]
