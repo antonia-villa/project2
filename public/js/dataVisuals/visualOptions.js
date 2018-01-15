@@ -16,8 +16,19 @@ function determineVisual(mainTopic, dataSet, divId){
 		$('#'+divId+'_header').append('<h3 class="visualtopicHeading"> Employment vs Unemployment</h3>');
 		var data = chartsJSData(mainTopic, dataSet);
 		donutChart(mainTopic, data, divId);
+	} else if (mainTopic.toString() == "Poverty"){
+		$('#'+divId+'_header').append('<h3 class="visualtopicHeading"> Poverty Distribution by Demographic</h3>');
+		var data = chartsJSData(mainTopic, dataSet);
+		polarAreaChart(mainTopic, data, divId);
+	} else if (mainTopic.toString() == "Commute"){
+		$('#'+divId+'_header').append('<h3 class="visualtopicHeading"> Time Spent Commuting</h3>');
+		var data = chartsJSData(mainTopic, dataSet);
+		barChart(mainTopic, data, divId);
+	} else if (mainTopic.toString() == "Education"){
+		$('#'+divId+'_header').append('<h3 class="visualtopicHeading"> Education Status</h3>');
+		var data = chartsJSData(mainTopic, dataSet);
+		barChart(mainTopic, data, divId);
 	}
-
 }
 
 // Used for D3 TreeData
@@ -68,7 +79,8 @@ function chartsJSData(mainTopic, dataSet){
 	var subDataSet = {};
 	for(keys in dataSet){
 		if((keys.split('_')[0]).toString() == mainTopic.toString().toLowerCase() && (keys.toString() != mainTopic.toString().toLowerCase())){
-			var label = String(keys.replace(/_/g, ' '));
+			var text = String(keys.replace(/_/g, ' '));
+			var label = text.substr(text.indexOf(' ')+1);
 			subDataSet[label] = Number(dataSet[keys]);
 		}
 	}

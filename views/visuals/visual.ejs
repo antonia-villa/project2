@@ -95,23 +95,25 @@
 <hr>
 
 <div id="contributionContainer">
-<h2 class="text-center"> New Contribution </h2>
+	<div id="newContributionHeader">
+		<h2 class="text-center" id="newContr"> New Contribution </h2>
+	</div>
 
-<form method="post" action ="/contributions">
+	<form method="post" action ="/contributions">
 	<div class="form-group">
-		<label for="title">Title:</label>
+		<label class = "contFormLabel" for="title">Title:</label>
 		<input type="text" name="title" placeholder = "Title of Contribution" class="form-control" required>
 	</div>
 	<div class="form-group">
-		<label for="content">Content:</label>
+		<label class = "contFormLabel" for="content">Content:</label>
 		<textarea name="content" class="form-control"></textarea>
 	</div>
 	<div class = "form-group">
 	<input type="hidden" name= "tags" value=<%=[results[0].year, results[0].zipcode, results[0].city, results[1].zipcode, results[1].city]%>>
 	</div>
 
-	<input type="submit" value="Create Contribution" class= "btn btn-success">
-</form>
+	<input type="submit" value="Create Contribution" class= "btn btn-success" id="contrBtn">
+	</form>
 </div>
 <script>
 	var results = <%- JSON.stringify(results) %>;
@@ -122,4 +124,6 @@
 <script type="text/javascript" src="/js/dataVisuals/visualOptions.js"></script>
 <script type="text/javascript" src="/js/dataVisuals/chartsJS/barChartsJS.js"></script>
 <script type="text/javascript" src="/js/dataVisuals/chartsJS/donutChartsJS.js"></script>
+<script type="text/javascript" src="/js/dataVisuals/chartsJS/polarAreaChartJS.js"></script>
 <script type="text/javascript" src="/js/helperFunctions.js"></script>
+<script type="text/javascript" src="/js/dataVisuals/chartsJS/pieceLabel.js"></script>
