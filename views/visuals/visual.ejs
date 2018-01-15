@@ -109,7 +109,12 @@
 		<textarea name="content" class="form-control"></textarea>
 	</div>
 	<div class = "form-group">
-	<input type="hidden" name= "tags" value=<%=[results[0].year, results[0].zipcode, results[0].city, results[1].zipcode, results[1].city]%>>
+	<% var tags= []; %>
+	<% tags.push(results[0].year)%>
+	<% results.forEach(function(item) { %>
+    	<% tags.push(item.zipcode, item.city) %>
+    <%});%>
+	<input type="hidden" name= "tags" value=<%=tags%>>
 	</div>
 
 	<input type="submit" value="Create Contribution" class= "btn btn-success customBtn">

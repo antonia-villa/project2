@@ -1,24 +1,21 @@
-<div class="formContainer">
-	<div class="formHeaderContainer">
-		<h2 class="text-center formHeader">Observations to Date:
-		</h2>
-	</div>
 <% if(contribution.length <=0){ %>
 	<h2> You haven't made any contributions!</h2>
 <%} else {%>
     <% contribution.forEach(function(item){ %>
-    <div class = "dataContributions">
-	    <ul class="contributionList">
-	    	<li>
-	    		<a class ="contributionLink" href="/contributions/<%= item.id %>">
-				<%= item.title %>
-				</a>
-				<p class="contributionContent"><%=item.content %></p>
-				<em>Written: <%=moment(item.createdAt).calendar() %>
-				</em>
-			</li>
-			<hr id ="listItemHR">
-		</ul>
+    <div class="formContainer">
+		<div class="formHeaderContainer">
+			<h2 class="text-center formHeader"><%= item.title %>
+			</h2>
+		</div>
+    	<div class = "dataContributions">
+			<p class="contributionContent"><%=item.content %></p>
+			<div class="contributionFooter">
+				<a class ="contributionLink" href="/contributions/<%= item.id %>"> View Contribution</a>	
+				<span class="align-right"> <em>Written: <%=moment(item.createdAt).calendar() %>
+				</em></span>
+			</div>
+		</div>
 	</div>
     <%});%>
 <%}%>
+

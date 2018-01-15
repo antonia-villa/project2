@@ -17,7 +17,9 @@ router.get('/all', isLoggedIn, function(req,res){
 
 
 router.post('/', isLoggedIn, function(req, res){
+	console.log('req.body', req.body);
 	var tags = req.body.tags.split(',');
+	console.log('tags', tags);
 	req.body.userId = req.user.id;
 
 	db.contribution.create(req.body).then(function(createdContribution){

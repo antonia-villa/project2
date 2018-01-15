@@ -19,6 +19,7 @@ router.get('/new', function(req, res){
 // Testing Post Rout
 router.post('/', function(req, res){
 	var results = testData.results
+	console.log(results)
 	res.render('visuals/visual', {results: results});
 
 })
