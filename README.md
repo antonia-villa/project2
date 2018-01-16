@@ -43,7 +43,7 @@ https://uscensusbureau.github.io/citysdk/
 - Enabled users ability to search through data tags to view contributions based on similar data input
 
 # Progress Log
-![ScreenShot](https://raw.github.com/antonia-villa/project2/master/public/img/appProgress/Log/DataEntryForm_V1.png)
+![alt tag](http://res.cloudinary.com/diemchbam/image/upload/v1516075690/DataEntryForm_V1_qaqeaz.png "Initial Data Entry Form _V1")
 
 # Issues Encounter throughout the Approach
 - Slow response from API caused issues building and manipulating data set
