@@ -1,30 +1,21 @@
 /***********************/
 /* Overall Styling
 /***********************/
-html{
-    min-height:100%;/* make sure it is at least as tall as the viewport */
-    position:relative;
-}
 
-body {
+body, html {
   font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
-  position: relative;
   height: 100%;
   margin:0;
 }
 
-.Site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.Site-content {
-  flex: 1;
-}
-
 a {
   color:white;
+}
+
+h2 {
+  text-align: center;
+  font-size: 28px;
+  padding: 5px;
 }
 
 h3 {
@@ -53,6 +44,10 @@ p {
 .btn:hover {
   background-color: #126796;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.block {
+  display: block;
 }
 /***********************/
 /* Nav Bar Styling
@@ -95,25 +90,23 @@ p {
 /* Landing Page
 /***********************/
 #landingPage{
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  overflow:hidden;
-  z-index:-1;
   background-image: url('/img/skyline.jpg');
-  background-size: cover;
-  color:white;
+     /* Full height */
+    height: 100%; 
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color:white;
 }
 
 #layer {
   display:block;
-    height: 700px;
-    width: 100%;
-    text-align:center;
-    background-color: rgba(50, 50, 50, 0.65);
-    background-size: cover;
+  height: 100%;
+  width: 100%;
+  text-align:center;
+  background-color: rgba(50, 50, 50, 0.65);
+  background-size: cover;
 }
 
 #homepageTitle{
@@ -166,15 +159,10 @@ p {
 /***********************/
 
 #mainPageContainer{
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  margin-top: 100px;
-  overflow:hidden;
-  z-index:-1;
   background-image: url('/img/map1.png');
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -199,7 +187,6 @@ p {
   text-align: center;
 }
 
-
 #mainPageToolInfo {
   margin-left: 35px;
   margin-right: 35px;
@@ -219,7 +206,11 @@ p {
 }
 
 #getStartedContainer{
-  margin-top: 540px;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #getStartedLink {
@@ -247,6 +238,11 @@ p {
 /***********************/
 /* Data Entry Form 
 /***********************/
+#dataEntryFormContainer{
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
 
 #dataEntryForm{
   margin-top: 20px;
@@ -261,19 +257,63 @@ p {
 	margin-top: 20px;
   font-size: 18px;
   text-align: center;
-
 }
 
-/* Loading Bar */
-#loader {
-  display: none;
-  position: fixed; 
-  top:0; 
-  left:0; 
-  width:100%; 
-  height: 100%; 
-  background: url('/img/globe.png');
+input[type="radio"] {
+    margin-right: 10px;
 }
+
+#zipCodeSelection {
+  width: 100%;
+  margin-bottom: 5px;
+  display:inline-block;
+}
+
+#dataTopicsAvailable{
+  width: 100%;
+}
+select, option { 
+  margin-right: 20px;
+  width: 200px;
+  float:right; 
+}
+
+.zipInput{
+  margin-right: 20px;
+  width: 200px;
+  float:right;
+}
+
+#zip1{
+  font-weight: bold;
+  float: left;
+}
+
+#zip2{
+  font-weight: bold;
+  float: left;
+  clear: right;
+}
+
+#alignleft1{
+  font-weight: bold;
+  float: left;
+}
+#alignleft2{
+  font-weight: bold;
+  float: left;
+}
+
+#floatleft{
+  float:left;
+  font-weight: bold;
+}
+
+#yearInputButtons {
+  text-align: right;
+  margin-right: 130px;
+}
+
 
 /********************************************************/
 /* /Visuals/Viaul */
@@ -307,7 +347,7 @@ p {
 }
 
 /***********************/
-/* Table */
+/* Data Table */
 /***********************/
 
 .overallStatsTable {
@@ -368,6 +408,7 @@ td {
   background-color: #edefec;
   border: 1px solid #6f7376;
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .formHeaderContainer {
@@ -398,12 +439,17 @@ td {
 
 
 .customBtn {
-  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   float: right;
 }
 
 .dataTags {
   color: #f37a4d;
+}
+
+#contributionBtn{
+  margin-right: 10px;
 }
 
 /***************************/

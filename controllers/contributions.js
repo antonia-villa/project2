@@ -11,7 +11,7 @@ router.get('/all', isLoggedIn, function(req,res){
 	}).then(function(contributions){
 		res.render('contributions/all', {contribution: contributions})
 	}).catch(function(err){
-		res.send('Sorry - an error occured', err);
+		res.send('Sorry - an error occured.', err);
 	});
 });
 
@@ -22,21 +22,21 @@ router.post('/', isLoggedIn, function(req, res){
 	req.body.userId = req.user.id;
 
 	db.contribution.create(req.body).then(function(createdContribution){
-			async.forEach(tags, function(t, callback){
-				db.tag.findOrCreate({
-					where: {content: t.trim()}
-				}).spread(function(tag, wasCreated){
-					if(tag){
-						createdContribution.addTag(tag);
-					}
-					callback();
-				})
+		async.forEach(tags, function(t, callback){
+			db.tag.findOrCreate({
+				where: {content: t.trim()}
+			}).spread(function(tag, wasCreated){
+				if(tag){
+					createdContribution.addTag(tag);
+				}
+				callback();
+			})
 
-			}, function(){
-				res.redirect('/contributions/' + createdContribution.id);
-			});
+		}, function(){
+			res.redirect('/contributions/' + createdContribution.id);
+		});
 	}).catch(function(err){
-		res.send('Sorry - an error occured', err);
+		res.send('Sorry - an error occured.', err);
 	});
 })
 
@@ -47,7 +47,7 @@ router.get('/:id', isLoggedIn, function(req,res){
 	}).then(function(contribution){
 		res.render('contributions/single', {result: contribution});	
 	}).catch(function(err){
-		res.send('Sorry - an error occured', err);
+		res.send('Sorry - an error occured.', err);
 	});
 })
 

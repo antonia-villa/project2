@@ -1,50 +1,50 @@
-<div id="loader">
-</div>
-<div class="formContainer">
+<div class="formContainer" id="dataEntryFormContainer">
 	<div class="formHeaderContainer">
 		<h2 class="text-center formHeader"> Choose Dataset </h2>
 	</div>
 	<form method="post" action="/visuals" id="dataInput">
-		<div id="entry1">
-			<div class="form-group">
-				<label for="zipcode1">Zip Code:</label>
-			  	<input name="zipcode1" type="text" placeholder= "Zip Code" pattern= "[0-9]{5}" required/>
-			  	<br>
-				<label for="zipcode2">Comparison Code:</label>
-			  	<input name="zipcode2" type="text" placeholder= "Zip Code" pattern= "[0-9]{5}" required/>
-	  		</div>
-			 <div class="form-group">
-			    <label for="2010">2010</label>
+		<div class="form-group" id="zipCodeSelection">
+			<div class="block">
+				<span id="zip1"><label for="zipcode1">Zip Code:</label></span>
+			  	<input name="zipcode1" type="text" placeholder= "5-digit Zipcode" pattern= "[0-9]{5}" class="zipInput" required/>
+		  	</div>
+		  	<div class="block">
+				<span id="zip2"><label for="zipcode2">Comparison Code:</label></span>
+			  	<input name="zipcode2" type="text" placeholder= "5-digit Zipcode" pattern= "[0-9]{5}" class="zipInput" required/>
+		  	</div>
+  		</div>
+		 <div class="form-group">
+		 	<span id="floatleft">Select Year:</span>
+		 	<div id="yearInputButtons">
+			    <label class="block" for="2010">
 			    <input type="radio" id="2010"
-			     name="year" value="2010" required>
-			    <label for="2011">2011</label>
+			     name="year" value="2010" required>2010</label>
+			    <label class="block" for="2011">
 			    <input type="radio" id="2011"
-			     name="year" value="2011" required>
-			    <label for="2012">2012</label>
+			     name="year" value="2011" required>2011</label>
+			    <label class="block" for="2012">
 			    <input type="radio" id="2012"
-			     name="year" value="2012" required>
-			    <label for="2013">2013</label>
+			     name="year" value="2012" required>2012</label>
+			    <label class="block" for="2013">
 			    <input type="radio" id="2013"
-			     name="year" value="2013" required>
-			    <label for="2014">2014</label>
+			     name="year" value="2013" required>2013</label>
+			    <label class="block" for="2014">
 			    <input type="radio" id="2014"
-			     name="year" value="2014" required>
-			    <label for="2015">2015</label>
-			    <input type="radio" id="2015"
-			     name="year" value="2015" required>
-			</div>
-			<div class="form-group">
-				<select name="topic1" id="topic1" required>
-					<option> Select Data Topic: </option>
-				</select>
-				<br>
-				<br>
-				<select name="topic2" id="topic2" required>
-					<option> Select Comparison Data Topic: </option>
-				</select>
-			</div>
+			     name="year" value="2014" required>2014</label>
+		 	</div>
+		</div>
+		<div class="form-group" id="dataTopicsAvailable">
+			<span id="alignleft1">Select Data Topic:</span>
+			<select name="topic1" id="topic1" required>
+				<option></option>
+			</select>
+			<br>
+			<br>
+			<span id="alignleft2">Select Comparison Data Topic:</span>
+			<select name="topic2" id="topic2" required>
+				<option></option>
+			</select>
 		</div>
 		<input type="submit" value="View Data" class= "btn btn-success customBtn">
   	</form>
-</div>
-<script type="text/javascript" src="/js/loadingBar.js"></script>
+ </div>

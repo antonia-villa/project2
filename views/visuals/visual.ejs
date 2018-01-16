@@ -23,7 +23,7 @@
 						</tr>
 						<tr>
 							<td> % of Population in Poverty </td>
-							<td><%=results[0].percent_poverty%> &#37;</td>
+							<td><%=Number(results[0].percent_poverty).toFixed(2)%> &#37;</td>
 						</tr>
 					</tbody>
 				</table>
@@ -112,7 +112,7 @@
 	<input type="hidden" name= "tags" value="<%=results[0].year%>, <%=results[0].city%>,<%=results[0].zipcode%>, <%=results[1].city%>, <%=results[1].zipcode%>">
 	</div>
 
-	<input type="submit" value="Create Contribution" class= "btn btn-success customBtn">
+	<input type="submit" value="Create Contribution" id= "contributionBtn" class= "btn btn-success customBtn">
 	</form>
 </div>
 <script>
