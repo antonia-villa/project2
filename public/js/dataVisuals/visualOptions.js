@@ -31,12 +31,10 @@ function determineVisual(mainTopic, dataSet, divId){
 	}
 }
 
-// Used for D3 TreeData
+// Used for D3 TreeData structure
 function treeData(mainTopic, dataSet){
-
 	var children = []
 
-	//Reformat Data for tree structure
 	for(keys in dataSet){
 		if((keys.split('_')[0]).toString() == mainTopic.toString().toLowerCase() && (keys.toString() != mainTopic.toString().toLowerCase())){
 			var child = {
@@ -47,17 +45,15 @@ function treeData(mainTopic, dataSet){
 				children.push(child);
 		}
 	}
-
   	// Create Tree Structure
   	var tree = {
       	topic: mainTopic,
       	children: children
   	};
-
   	return tree;
 }
 
-// Used for D3 Donut Data
+// Used for D3 Donut data structure
 function donutData(mainTopic, dataSet){
 	var donutData = [];
 
@@ -73,7 +69,7 @@ function donutData(mainTopic, dataSet){
 	return donutData;
 }
 
-// Charts JS Data
+// Used for all ChartsJS Data structure
 function chartsJSData(mainTopic, dataSet){
 	// Extract subData Set
 	var subDataSet = {};
@@ -85,7 +81,7 @@ function chartsJSData(mainTopic, dataSet){
 		}
 	}
 	
-	// Sort data by values
+	// Sort dataset by values
 	function sort(obj) {
 	  return Object.keys(obj).sort(function(a, b) {
 	    return obj[b] - obj[a];
@@ -112,8 +108,7 @@ function chartsJSData(mainTopic, dataSet){
 	return barData;
 }
 
-
-//Run Function
+// Create Charts when page loads
 $(document).ready(function(){
 
 	// MAIN TOPIC 1

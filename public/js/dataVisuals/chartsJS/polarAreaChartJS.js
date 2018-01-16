@@ -34,8 +34,6 @@ function polarAreaChart(mainTopic, dataSet, divId){
     }
   }
 
-
-
   var polarAreaChart =new Chart(document.getElementById(id), {
     type: 'polarArea',
     data: {
