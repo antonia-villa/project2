@@ -1,3 +1,5 @@
+// Data Set for Visual Testing
+
 module.exports = {
     results: [ { 'zipcode': '02145',
     'year': '2012',

@@ -1,9 +1,8 @@
 var topiclist = require('./data_topics');
 
-
+// Format Raw API Data for data visuals
 module.exports = {
 	dataFormat: function(rawdata){
-		console.log('rawdata', rawdata);
 		var zipcode = rawdata.zip;
 		var year = rawdata.year;
 		var city = rawdata.place_name;

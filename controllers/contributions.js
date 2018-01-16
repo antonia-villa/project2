@@ -9,23 +9,20 @@ router.get('/all', isLoggedIn, function(req,res){
 	db.contribution.findAll({
 		where: {userId: req.user.id},
 	}).then(function(contributions){
-		console.log('contributions', contributions);
 		res.render('contributions/all', {contribution: contributions})
-	})
-
+	}).catch(function(err){
+		res.send('Sorry - an error occured', err);
+	});
 });
 
 
 router.post('/', isLoggedIn, function(req, res){
-	console.log('req.body', req.body);
-	console.log('req.body.tags',req.body.tags )
+	// Create tags array for database storage
 	var tags = req.body.tags.split(',');
-	console.log('tags', tags);
 	req.body.userId = req.user.id;
 
 	db.contribution.create(req.body).then(function(createdContribution){
 			async.forEach(tags, function(t, callback){
-				// Add tag to the tag table
 				db.tag.findOrCreate({
 					where: {content: t.trim()}
 				}).spread(function(tag, wasCreated){
@@ -38,9 +35,8 @@ router.post('/', isLoggedIn, function(req, res){
 			}, function(){
 				res.redirect('/contributions/' + createdContribution.id);
 			});
-
 	}).catch(function(err){
-		res.send('Sorry there was an error', err);
+		res.send('Sorry - an error occured', err);
 	});
 })
 
@@ -50,7 +46,9 @@ router.get('/:id', isLoggedIn, function(req,res){
 		include: [db.tag]
 	}).then(function(contribution){
 		res.render('contributions/single', {result: contribution});	
-	})
+	}).catch(function(err){
+		res.send('Sorry - an error occured', err);
+	});
 })
 
 module.exports = router;

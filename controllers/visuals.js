@@ -98,7 +98,7 @@ router.post('/', function(req, res){
 			req.session.results = results;
 			res.redirect('/visuals/visual');
 		 } else {
-		 	res.render( './404');
+		 	res.render( './404', {error: err.message});
 		 }
 	});
 });

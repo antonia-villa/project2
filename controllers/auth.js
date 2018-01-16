@@ -3,7 +3,6 @@ var passport = require("../config/passportConfig");
 var db = require("../models");
 var router = express.Router();
 
-//login get and post routes
 router.get("/login", function(req, res){
 	res.render("auth/login");
 });
@@ -12,10 +11,9 @@ router.post("/login", passport.authenticate("local", {
 	successRedirect: "/main/profile",
 	successFlash: "Login Successful",
 	failureRedirect: "/auth/login",
-	failureFlash: "invalid credentials"
+	failureFlash: "Invalid Credentials. Try again."
 }));
 
-//signup get and post routes
 router.get("/signup", function(req, res){
 	res.render("auth/signup");
 })
@@ -31,15 +29,13 @@ router.post("/signup", function(req, res, next){
 		}
 	}).spread(function(user, wasCreated){
 		if(wasCreated){
-			//good job.  you nailed it without duplication
 			passport.authenticate("local", {
 				successRedirect: "/main/profile",
-				successFlash: "logged in with success"
+				successFlash: "Log in was successful!"
 			})(req, res, next);
 		}
 		else {
-			//you blew it, you should login not, signup
-			req.flash("error", "Email already exists");
+			req.flash("error", "Sorry - the email already exists.");
 			res.redirect("/auth/login");
 		}
 	}).catch(function(err){
