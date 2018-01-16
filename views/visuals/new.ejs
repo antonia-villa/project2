@@ -1,3 +1,5 @@
+<div id="loader">
+</div>
 <div class="formContainer">
 	<div class="formHeaderContainer">
 		<h2 class="text-center formHeader"> Choose Dataset </h2>
@@ -7,7 +9,7 @@
 			<div class="form-group">
 				<label for="zipcode1">Zip Code:</label>
 			  	<input name="zipcode1" type="text" placeholder= "Zip Code" pattern= "[0-9]{5}" required/>
-	
+			  	<br>
 				<label for="zipcode2">Comparison Code:</label>
 			  	<input name="zipcode2" type="text" placeholder= "Zip Code" pattern= "[0-9]{5}" required/>
 	  		</div>
@@ -32,17 +34,17 @@
 			     name="year" value="2015" required>
 			</div>
 			<div class="form-group">
-				<select name="topic1" id="topic1">
+				<select name="topic1" id="topic1" required>
 					<option> Select Data Topic: </option>
 				</select>
 				<br>
 				<br>
-				<select name="topic2" id="topic2">
+				<select name="topic2" id="topic2" required>
 					<option> Select Comparison Data Topic: </option>
 				</select>
 			</div>
-		</div>			
+		</div>
 		<input type="submit" value="View Data" class= "btn btn-success customBtn">
-
   	</form>
-  </div>
+</div>
+<script type="text/javascript" src="/js/loadingBar.js"></script>

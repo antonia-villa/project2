@@ -17,89 +17,104 @@ router.get('/new', function(req, res){
 
 
 // Testing Post Rout
-router.post('/', function(req, res){
-	var results = testData.results
-	console.log(results)
-	res.render('visuals/visual', {results: results});
-
-})
-
-// Live Post Route
 // router.post('/', function(req, res){
-// 	// Input variables for API request from #dataInput form
-// 	//var userId = req.body.userId;
-// 	var zipcode1 = req.body.zipcode1;
-// 	var zipcode2 = req.body.zipcode2;
-// 	var year = req.body.year;
-// 	var topic1Id = req.body.topic1
-// 	var topic2Id = req.body.topic2
+// 	var results = testData.results
+// 	res.render('visuals/visual', {results: results});
 
-// 	// select subtopic from topics array (/controllers/data_topics.js)
-// 	var topicName1 = topiclist.topics[topic1Id].topic
-// 	var topicName2 = topiclist.topics[topic2Id].topic
+// })
 
-// 	var subtopics = []
+//Live Post Route
+router.post('/', function(req, res){
 
-// 	for(i in topiclist.topics){
-// 		if(topiclist.topics[i].id == topic1Id || topiclist.topics[i].id == topic2Id){
-// 			subtopics = subtopics.concat(topiclist.topics[i].subTopic, topiclist.topics[i].subTopic);
-// 		}
-// 	}
+	// Input variables for API request from #dataInput form
+	//var userId = req.body.userId;
+	var zipcode1 = req.body.zipcode1;
+	var zipcode2 = req.body.zipcode2;
+	var year = req.body.year;
+	var topic1Id = req.body.topic1
+	var topic2Id = req.body.topic2
 
-// 	// Default statistics to return
-// 	var defaultVariables = ["population", "age" , "income", "poverty"]
+	// select subtopic from topics array (/controllers/data_topics.js)
+	var topicName1 = topiclist.topics[topic1Id].topic
+	var topicName2 = topiclist.topics[topic2Id].topic
 
-// 	// Final variable list based on users seletion 
-// 	var variables = defaultVariables.concat(subtopics);
+	var subtopics = []
 
-// 	var request1 = {
-//     	"level": "state",
-//     	"zip": zipcode1,
-//     	"variables": variables,
-//     	"api": "acs5",
-//     	"year": year
-// 	};
+	for(i in topiclist.topics){
+		if(topiclist.topics[i].id == topic1Id || topiclist.topics[i].id == topic2Id){
+			subtopics = subtopics.concat(topiclist.topics[i].subTopic, topiclist.topics[i].subTopic);
+		}
+	}
 
-// 	var request2 = {
-//     	"level": "state",
-//     	"zip": zipcode2,
-//     	"variables": variables,
-//     	"api": "acs5",
-//     	"year": year
-// 	};
+	// Default statistics to return
+	var defaultVariables = ["population", "age" , "income", "poverty"]
 
-// 	// Request data from API
-// 	function fn1(callback){
-// 			census.APIRequest(request1, function(response) {
-// 			var rawdata = response;
-// 			var topic = topiclist.topics[topic1Id].topic;
-// 			var data = dataCleanse.dataFormat(rawdata);
-// 			data.mainTopic1 = [topicName1];
-// 			data.mainTopic2 = [topicName2];
-// 			callback(null, data);
-// 			return data;
-// 			});	
-// 	}
+	// Final variable list based on users seletion 
+	var variables = defaultVariables.concat(subtopics);
+
+	var request1 = {
+    	"level": "state",
+    	"zip": zipcode1,
+    	"variables": variables,
+    	"api": "acs5",
+    	"year": year
+	};
+
+	var request2 = {
+    	"level": "state",
+    	"zip": zipcode2,
+    	"variables": variables,
+    	"api": "acs5",
+    	"year": year
+	};
+
+	// Request data from API
+	function fn1(callback){
+			census.APIRequest(request1, function(err, response) {
+				if(!err){
+					var rawdata = response;
+					var topic = topiclist.topics[topic1Id].topic;
+					var data = dataCleanse.dataFormat(rawdata);
+					data.mainTopic1 = [topicName1];
+					data.mainTopic2 = [topicName2];
+					callback(null, data);
+					return data;
+				} else {
+					res.render( '/404', {error: err });
+				}
+
+			});
+	}
 
 
-// 	function fn2(callback){
-// 			census.APIRequest(request2, function(response) {
+	function fn2(callback){
+			census.APIRequest(request2, function(err, response) {
+				if(!err){
+					var rawdata = response;
+					var topic = topiclist.topics[topic2Id].topic;
+					var data = dataCleanse.dataFormat(rawdata);
+					data.mainTopic1 = [topicName1];
+					data.mainTopic2 = [topicName2];
+					callback(null, data);
+					return data;
+				} else {
+					res.render( '404', {error: err });
+				}
+			});	
+	}
 
-// 			var rawdata = response;
-// 			var topic = topiclist.topics[topic2Id].topic;
-// 			var data = dataCleanse.dataFormat(rawdata);
-// 			data.mainTopic1 = [topicName1];
-// 			data.mainTopic2 = [topicName2];
-// 			callback(null, data);
-// 			return data;
-// 			});	
-// 	}
+	async.parallel([fn1, fn2], function(err, results){
+		if(!err){
+			req.session.results = results;
+			console.log('results', req.session.results);
+			res.redirect('/visuals/visual');
+		} else {
+			res.render( '/404', {error: err });
+		}
+	});
+});
 
-// 	async.parallel([fn1, fn2], function(err, results){
-// 		req.session.results = results;
-// 		res.redirect('/visuals/visual');
-// 	});
-// });
+
 
 router.get('/visual', function(req,res){
 	var results = req.session.results;

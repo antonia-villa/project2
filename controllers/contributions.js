@@ -18,6 +18,7 @@ router.get('/all', isLoggedIn, function(req,res){
 
 router.post('/', isLoggedIn, function(req, res){
 	console.log('req.body', req.body);
+	console.log('req.body.tags',req.body.tags )
 	var tags = req.body.tags.split(',');
 	console.log('tags', tags);
 	req.body.userId = req.user.id;
@@ -29,21 +30,17 @@ router.post('/', isLoggedIn, function(req, res){
 					where: {content: t.trim()}
 				}).spread(function(tag, wasCreated){
 					if(tag){
-						// This part is what adds the relationship in the join table
 						createdContribution.addTag(tag);
 					}
-					// Calling this function is like saying this is done/resolved
 					callback();
 				})
 
 			}, function(){
-				// Happens when ALL calls are resolved
 				res.redirect('/contributions/' + createdContribution.id);
 			});
 
 	}).catch(function(err){
-		console.log('error', err);
-		res.send('uh oh!', err);
+		res.send('Sorry there was an error', err);
 	});
 })
 

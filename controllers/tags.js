@@ -39,15 +39,12 @@ router.get('/:id', isLoggedIn, function(req, res){
 		var contributionIds = contributions.map(function(item){
 			return item.contributionId;
 		});
-		console.log('contributionIds', contributionIds);
 		db.contribution.findAll({
 			where: {id: contributionIds}
 		}).then(function(contributions){
-			console.log(contributions);
 			res.render('tags/single', {contributions: contributions})
 		});
 		
-		//res.render('tags/single', {tag: tag});
 	});
 })
 

@@ -3,10 +3,16 @@ var topiclist = require('./data_topics');
 
 module.exports = {
 	dataFormat: function(rawdata){
+		console.log('rawdata', rawdata);
 		var zipcode = rawdata.zip;
 		var year = rawdata.year;
 		var city = rawdata.place_name;
-		var percent_poverty = Math.floor((rawdata.data[0].poverty/rawdata.data[0].population)*100);
+		var percent_poverty;
+		if (rawdata.data[0].poverty === undefined){
+			percent_poverty = 0;
+		} else {
+			percent_poverty = Math.floor((rawdata.data[0].poverty/rawdata.data[0].population)*100);
+		}
 
 		var data = {zipcode:zipcode, year:year, city:city, percent_poverty:percent_poverty};
 		var data_variables = rawdata.data[0];
