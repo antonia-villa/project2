@@ -27,7 +27,6 @@ router.get('/new', function(req, res){
 router.post('/', function(req, res){
 
 	// Input variables for API request from #dataInput form
-	//var userId = req.body.userId;
 	var zipcode1 = req.body.zipcode1;
 	var zipcode2 = req.body.zipcode2;
 	var year = req.body.year;
@@ -70,8 +69,7 @@ router.post('/', function(req, res){
 
 	// Request data from API
 	function fn1(callback){
-			census.APIRequest(request1, function(err, response) {
-				if(!err){
+			census.APIRequest(request1, function(response) {
 					var rawdata = response;
 					var topic = topiclist.topics[topic1Id].topic;
 					var data = dataCleanse.dataFormat(rawdata);
@@ -79,17 +77,12 @@ router.post('/', function(req, res){
 					data.mainTopic2 = [topicName2];
 					callback(null, data);
 					return data;
-				} else {
-					res.render( '/404', {error: err });
-				}
-
 			});
 	}
 
 
 	function fn2(callback){
-			census.APIRequest(request2, function(err, response) {
-				if(!err){
+			census.APIRequest(request2, function(response) {
 					var rawdata = response;
 					var topic = topiclist.topics[topic2Id].topic;
 					var data = dataCleanse.dataFormat(rawdata);
@@ -97,20 +90,16 @@ router.post('/', function(req, res){
 					data.mainTopic2 = [topicName2];
 					callback(null, data);
 					return data;
-				} else {
-					res.render( '404', {error: err });
-				}
 			});	
 	}
 
 	async.parallel([fn1, fn2], function(err, results){
 		if(!err){
 			req.session.results = results;
-			console.log('results', req.session.results);
 			res.redirect('/visuals/visual');
-		} else {
-			res.render( '/404', {error: err });
-		}
+		 } else {
+		 	res.render( './404');
+		 }
 	});
 });
 
@@ -118,7 +107,6 @@ router.post('/', function(req, res){
 
 router.get('/visual', function(req,res){
 	var results = req.session.results;
-	console.log('results', results);
 	res.render('visuals/visual', {results: results});
 });
 

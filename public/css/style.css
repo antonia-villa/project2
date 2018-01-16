@@ -219,12 +219,10 @@ p {
 }
 
 #getStartedContainer{
-  margin-top: 30px;
-  z-index: 3;
+  margin-top: 540px;
 }
 
 #getStartedLink {
-
   text-align: center;
   text-transform: uppercase;
   font-size: 16px;
@@ -450,4 +448,32 @@ span.align-right {
   margin-left: 10px;
   margin-right: 10px;
   padding-bottom: 30px;
+}
+
+/***************************/
+/* Error Page*/
+/***************************/
+#errorImage {
+  display:inline;
+  width: 100px;
+  height: 100px;
+}
+#errorContainer{
+  margin: 50px;
+  padding: 20px;
+  border: 1px solid red;
+  background-color: #c5c6c2;
+  border-radius: 5px;
+  text-align: center;
+  color: black;
+}
+
+#errorHeader {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.errorContent{
+  margin: 0;
+  font-size: 24px;
 }
