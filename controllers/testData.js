@@ -1,5 +1,6 @@
 // Data Set for Visual Testing
 
+// // Data Set 1
 module.exports = {
     results: [ { 'zipcode': '02145',
     'year': '2012',
@@ -40,3 +41,54 @@ module.exports = {
     'mainTopic1': [ 'Population' ],
     'mainTopic2': [ 'Employment' ] } ]
 }
+
+// // Data Set 2
+// module.exports = {
+// results: [{ 
+//     'zipcode': '02143',
+//     'year': '2012',
+//     'city': 'Somerville city',
+//     'percent_poverty': '10.64',
+//     'population': '6560595',
+//     'age': '39.1',
+//     'income': '66658',
+//     'poverty': '698286',
+//     'poverty_white_alone': '441092',
+//     'poverty_black_alone': '91399',
+//     'poverty_asian_alone': '48263',
+//     'poverty_native_hawaiian_alone': '284',
+//     'poverty_other_alone': '81548',
+//     'education_none': '59463',
+//     'education_high_school': '1027710',
+//     'education_ged': '128940',
+//     'education_associates': '344724',
+//     'education_bachelors': '989299',
+//     'education_masters': '523662',
+//     'education_professional': '125268',
+//     'education_doctorate': '102237',
+//     'mainTopic1': [ 'Education' ],
+//     'mainTopic2': [ 'Poverty' ] },
+//   { 'zipcode': '98101',
+//     'year': '2012',
+//     'city': 'Seattle city',
+//     'percent_poverty': '12.67',
+//     'population': '6738714',
+//     'age': '37.2',
+//     'income': '59374',
+//     'poverty': '853960',
+//     'poverty_white_alone': '582023',
+//     'poverty_black_alone': '55318',
+//     'poverty_asian_alone': '55265',
+//     'poverty_native_hawaiian_alone': '6419',
+//     'poverty_other_alone': '80950',
+//     'education_none': '48253',
+//     'education_high_school': '890248',
+//     'education_ged': '173270',
+//     'education_associates': '426976',
+//     'education_bachelors': '910457',
+//     'education_masters': '360748',
+//     'education_professional': '91015',
+//     'education_doctorate': '60889',
+//     'mainTopic1': [ 'Education' ],
+//     'mainTopic2': [ 'Poverty' ] } ]
+// }

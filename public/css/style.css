@@ -49,6 +49,10 @@ p {
 .block {
   display: block;
 }
+
+.alert {
+  margin-bottom: 0;
+}
 /***********************/
 /* Nav Bar Styling
 /***********************/
@@ -91,13 +95,11 @@ p {
 /***********************/
 #landingPage{
   background-image: url('/img/skyline.jpg');
-     /* Full height */
-    height: 100%; 
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color:white;
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color:white;
 }
 
 #layer {
@@ -140,6 +142,10 @@ p {
 }
 
 .footerText {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
   height: 50px;
   background-color: #323a44;
   margin-top: auto;
@@ -147,12 +153,22 @@ p {
 
 
 #homeFooterText {
+  margin-bottom: 0;
   line-height: 50px;
   font-size: 16px;
   font-weight: 350;
   text-align: center;
   text-transform: uppercase;
   color:white;
+}
+
+/***********************/
+/* Login Form
+/***********************/
+.logInForm{
+  margin-left: 120px;
+  margin-right: 120px;
+
 }
 /***********************/
 /* Home Page (main)
@@ -167,10 +183,8 @@ p {
 }
 
 #mainPageContent{
-  margin-top: 100px;
   z-index:1;
   opacity: 1;
-  margin-top: 70px;
   margin-left: 20px;
   margin-right: 20px;
 }

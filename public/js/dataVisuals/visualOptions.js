@@ -27,7 +27,7 @@ function determineVisual(mainTopic, dataSet, divId){
 	} else if (mainTopic.toString() == "Education"){
 		$('#'+divId+'_header').append('<h3 class="visualtopicHeading"> Education Status</h3>');
 		var data = chartsJSData(mainTopic, dataSet);
-		barChart(mainTopic, data, divId);
+		donutChart(mainTopic, data, divId);
 	}
 }
 

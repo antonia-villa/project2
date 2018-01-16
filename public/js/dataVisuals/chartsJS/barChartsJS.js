@@ -27,7 +27,7 @@ function barChart(mainTopic, dataSet, divId){
       yAxes: [{
         scaleLabel: {
           display: true,
-          labelString: mainTopic + ' (in #s)'
+          labelString: mainTopic
         },
         ticks: {
           suggestedMax: maxYAxis+100,
@@ -78,6 +78,16 @@ function barChart(mainTopic, dataSet, divId){
             });
         });
       }
+    },
+    tooltips: {
+      callbacks: {
+        title: function(tooltipItem, data) {
+          return data['labels'][tooltipItem[0]['index']];
+        },
+        label: function(tooltipItem, data) {
+          return (data['datasets'][0]['data'][tooltipItem['index']]).toLocaleString('en');
+        }
+      }
     }
   };
 
@@ -89,7 +99,16 @@ function barChart(mainTopic, dataSet, divId){
       datasets: [
         {
           label: false,
-          backgroundColor: ['#1F77B4', '#FF7F0E', '#2CA02C', '#D62728', '#9467BD', '#8C564B', '#CFECF9', '#7F7F7F', '#BCBD22', '#17BECF'],
+          backgroundColor: ["#102367",
+            "#3F8DCA",
+            "#D7C3B1",
+            "#315495",
+            "#BCBCBC",
+            "#E4C75F",
+            "#1C75A1",
+            "#9FD5DF",
+            "#71917C"
+          ],
           borderWidth: 2,
           hoverBorderWidth: 0,
           data: values
