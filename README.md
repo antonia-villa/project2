@@ -44,6 +44,11 @@ https://uscensusbureau.github.io/citysdk/
 
 # Progress Log
 ![alt tag](http://res.cloudinary.com/diemchbam/image/upload/v1516075690/DataEntryForm_V1_qaqeaz.png "Initial Data Entry Form _V1")
+![alt tag](http://res.cloudinary.com/diemchbam/image/upload/v1516075690/dataView_V1_zletvb.png "Initial Data Display _V1")
+![alt tag](http://res.cloudinary.com/diemchbam/image/upload/v1516075690/allTags_V1_smgx7i.png "Initial Data Tags Display_V1")
+![alt tag](http://res.cloudinary.com/diemchbam/image/upload/v1516075690/dataView_V3_sfhlwl.png "Data Display_V2")
+![alt tag](http://res.cloudinary.com/diemchbam/image/upload/v1516075690/dataView_V2_eyqvdo.png "Data Display_V3")
+
 
 # Issues Encounter throughout the Approach
 - Slow response from API caused issues building and manipulating data set
