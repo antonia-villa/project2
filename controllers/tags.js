@@ -4,8 +4,9 @@ var isLoggedIn = require('../middleware/isLoggedIn');
 var router = express.Router();
 var async = require('async');
 
-
+// Select all data tags on users contributions
 router.get('/all', isLoggedIn, function(req,res){
+	// Select users contributions
 	db.contribution.findAll({
 		attributes: ['id'], 
 		where: {userId: req.user.id}
@@ -13,14 +14,14 @@ router.get('/all', isLoggedIn, function(req,res){
 		var contributionIds = usersContribs.map(function(item){
 			return item.id;
 		});
-
+		// Retrieve contribution data tags
 		db.contribution_tag.findAll({
 			where: {contributionId: contributionIds}
 		}).then(function(tags){
 			var tagIds = tags.map(function(item){
 				return item.tagId;
 			});
-
+			// Retrieve all data tags
 			db.tag.findAll({
 				where: {id: tagIds}
 			}).then(function(tags){
@@ -30,7 +31,7 @@ router.get('/all', isLoggedIn, function(req,res){
 	});
 });
 
-
+// Select all contributions associated to tags
 router.get('/:id', isLoggedIn, function(req, res){
 	db.contribution_tag.findAll({
 		attributes: ['contributionId'], 
@@ -44,7 +45,6 @@ router.get('/:id', isLoggedIn, function(req, res){
 		}).then(function(contributions){
 			res.render('tags/single', {contributions: contributions})
 		});
-		
 	});
 })
 

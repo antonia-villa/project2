@@ -1,6 +1,6 @@
 // Select data topics
 var dataSet1 = results[0];
-var dataSet2 = results[1]
+var dataSet2 = results[1];
 
 var mainTopic1 = results[0].mainTopic1;
 var mainTopic2 = results[0].mainTopic2;

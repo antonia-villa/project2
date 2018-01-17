@@ -1,4 +1,4 @@
-// Categorized Data Topics from Census 
+// Categorized Data Topics from Census for API Requests 
 
 module.exports = {
 	topics: 

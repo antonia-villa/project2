@@ -17,14 +17,14 @@ router.get('/new', isLoggedIn, function(req, res){
 });
 
 
-//Testing Post Rout
+// //Testing Post Route
 // router.post('/', function(req, res){
 // 	var results = testData.results
 // 	res.render('visuals/visual', {results: results});
 
 // })
 
-//Live Post Route
+// Live Post Route
 router.post('/', isLoggedIn, function(req, res){
 
 	// Input variables for API request from #dataInput form
@@ -34,12 +34,13 @@ router.post('/', isLoggedIn, function(req, res){
 	var topic1Id = req.body.topic1
 	var topic2Id = req.body.topic2
 
-	// select subtopic from topics array (/controllers/data_topics.js)
+	// select subtopic from topics array located in (/controllers/data_topics.js)
 	var topicName1 = topiclist.topics[topic1Id].topic
 	var topicName2 = topiclist.topics[topic2Id].topic
 
 	var subtopics = []
 
+	// Join all subtopics from 
 	for(i in topiclist.topics){
 		if(topiclist.topics[i].id == topic1Id || topiclist.topics[i].id == topic2Id){
 			subtopics = subtopics.concat(topiclist.topics[i].subTopic, topiclist.topics[i].subTopic);
