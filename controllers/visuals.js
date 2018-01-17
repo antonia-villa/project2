@@ -10,6 +10,13 @@ var topiclist = require('./data_topics');
 var testData = require('./testData');
 var async = require('async');
 
+import root from 'window-or-global'
+
+// Testing new API Process
+// To finish later
+// URL: https://uscensusbureau.github.io/citysdk/developers/queryBuilder/
+// var sdk = new CitySDK();
+// var census = new CensueModule(process.env.CENSUS_API_KEY);
 
 
 router.get('/new', isLoggedIn, function(req, res){
