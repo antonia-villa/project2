@@ -1,4 +1,4 @@
-// Require necessary packages
+// Require packages
 require('dotenv').config();
 var bodyParser = require('body-parser');
 var express = require('express');
