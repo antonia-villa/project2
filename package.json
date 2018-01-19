@@ -16,6 +16,7 @@
     "chart.js": "^2.7.1",
     "chart.piecelabel.js": "^0.9.0",
     "cheerio": "^1.0.0-rc.2",
+    "citysdk": "git://github.com/chadhuber/citysdk-node.git",
     "connect-flash": "^0.1.1",
     "dotenv": "^4.0.0",
     "ejs": "^2.5.7",
